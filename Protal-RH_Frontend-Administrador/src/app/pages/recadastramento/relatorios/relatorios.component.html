@@ -1,0 +1,194 @@
+<div class="d-flex flex-column justify-content-center align-items-center my-5">
+
+  <div class="mt-5">
+    <h3>Lista de Servidores - Recadastramento anual</h3>
+  </div>
+
+  <div class="filtro__container d-flex flex-column justify-content-between shadow" *ngIf="divFiltro">
+
+    <div class="w-100 filtros__botoes">
+      <button class="button_search" (click)="ativarFiltro('secretariaAno')">Pesquisar por secretaria e ano</button>
+      <button class="button_search" (click)="ativarFiltro('secretaria')">Pesquisar por secretaria</button>
+      <button class="button_search" (click)="ativarFiltro('ano')">Pesquisar por ano</button>
+      <!-- <button>Pesquisar </button> -->
+    </div>
+
+    <div class="mx-5 w-100 filters">
+
+        <div class="default__filter">
+          <input matInput type="text" (keyup)="doFilter($any($event.target).value)" placeholder="Filtro padrão">
+        </div>
+
+        <div>
+
+        </div>
+
+        <div class="secretaria__filter" *ngIf="filtroSecretaria">
+
+          <select class="form-select pointer" aria-label="Default select example" [(ngModel)]="secretaria" (change)="getAllServidorBySecretaria()">
+
+            <option value=""> Selecione a secretaria </option>
+            <option [ngValue]="item.sigla" *ngFor="let item of secretarias"> {{ item.descricao }} </option>
+
+          </select>
+
+        </div>
+
+        <div class="secretaria__filter" *ngIf="filtroAno">
+
+          <select class="form-select pointer" aria-label="Default select example" [(ngModel)]="ano" (change)="getAllServidorByAno()">
+
+            <option value=""> Selecione o Ano de exercício </option>
+            <option [ngValue]="item" *ngFor="let item of anosExercicio"> {{ item }} </option>
+
+          </select>
+
+        </div>
+
+        <div class="secretaria__filter" *ngIf="filtroSecretariaAno">
+
+          <select class="form-select pointer" aria-label="Default select example" [(ngModel)]="secretaria" (change)="getAllServidorByAnoAndSecretaria()">
+
+            <option value=""> Selecione a secretaria </option>
+            <option [ngValue]="item.sigla" *ngFor="let item of secretarias"> {{ item.descricao }} </option>
+
+          </select>
+
+          <select class="form-select pointer" aria-label="Default select example" [(ngModel)]="ano" (change)="getAllServidorByAnoAndSecretaria()" [class]="disabled" id="ano">
+
+            <option value=""> Selecione o Ano de exercício </option>
+            <option [ngValue]="item" *ngFor="let item of anosExercicio"> {{ item }} </option>
+
+          </select>
+
+        </div>
+
+    </div>
+
+    <!-- <div class="background-primary d-flex justify-content-center align-items-center px-3">
+
+      <mat-icon class="mat-18 color-white">search</mat-icon>
+    </div> -->
+
+  </div>
+  <!--div filtro -->
+
+  <div class="botao__ativar__filtro">
+    <button (click)="exportexcel()" class="botao__ativar__filtro-botao">Exportar Excel</button>
+    <button (click)="getAniversariantesValidador()" class="botao__ativar__filtro-botao-aniversariante"> {{ valAniversariante? "Mostrar todos" : "Aniversariantes do mês"}} </button>
+    <button class="botao__ativar__filtro-botao" (click)="adicionarFiltro()"> {{ divFiltro? "Ocultar Filtro" : "Usar Filtro"}} </button>
+  </div>
+
+  <div class="listar__container shadow mt-3">
+
+    <table mat-table #table [dataSource]="dataSource" matSort class="tabela" id="excel-table">
+
+      <ng-container matColumnDef="matricula">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Registro </th>
+        <td mat-cell *matCellDef="let element"> {{element.matricula || '-'}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="nome">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome </th>
+        <td mat-cell *matCellDef="let element"> {{element.nome | uppercase}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="secretaria">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Secretaria </th>
+        <td mat-cell *matCellDef="let element"> {{element.secretaria}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="dtAtualizacao">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Data Cadastro </th>
+        <td mat-cell *matCellDef="let element"> {{element.dtAtualizacao | date : 'dd/MM/yyyy'}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="protocolo">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Protocolo </th>
+        <td mat-cell *matCellDef="let element"> {{(element.id + '2023').padStart(8,"0")}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="statusValidacao">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header  class="text-center"> Status </th>
+        <td mat-cell *matCellDef="let element"  class="text-center">
+
+          <div *ngIf="element.statusValidacao == 'Aguardando Validação' ">
+            <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-check-circle-fill color-gray" viewBox="0 0 16 16">
+              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+            </svg>
+          </div>
+
+          <div *ngIf="element.statusValidacao == 'Validado' ">
+            <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-check-circle-fill color-green" viewBox="0 0 16 16">
+              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+            </svg>
+          </div>
+
+          <div *ngIf="element.statusValidacao == 'Inválido' ">
+            <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-x-circle-fill color-red" viewBox="0 0 16 16">
+              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+            </svg>
+          </div>
+
+        </td>
+      </ng-container>
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="redirectDetails(row)"></tr>
+
+    </table>
+
+    <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20, 50, 100]">
+    </mat-paginator>
+
+  </div>
+
+  <div class="d-flex justify-content-start div__legenda">
+
+    <div class="legenda shadow d-flex align-items-center justify-content-center">
+
+      <div class="d-flex justify-content-center align-items-center w-100">
+        <div class="legenda__itens-1">
+          <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-check-circle-fill color-green" viewBox="0 0 16 16">
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+          </svg>
+        </div>
+
+        <div class="legenda__itens-2">
+          <p class="paragrafo">VALIDADO</p>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-center align-items-center w-100">
+        <div class="legenda__itens-1">
+          <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-check-circle-fill color-gray" viewBox="0 0 16 16">
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+          </svg>
+        </div>
+
+        <div class="legenda__itens-2">
+          <p class="paragrafo">AGUARDANDO VALIDAÇÃO</p>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-center align-items-center w-100">
+        <div class="legenda__itens-1">
+          <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-x-circle-fill color-red" viewBox="0 0 16 16">
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+          </svg>
+        </div>
+
+        <div class="legenda__itens-2">
+          <p class="paragrafo">INVALIDADO</p>
+        </div>
+      </div>
+
+
+
+
+    </div>
+
+  </div>
+
+</div>

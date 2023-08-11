@@ -1,0 +1,161 @@
+/* ========== CONTAINER PRINCIPAL ========== */
+
+.novo__container
+{
+  min-height: 600px;
+  width: 1000px;
+  background-color: white;
+  border-radius: 10px;
+  margin-bottom: 2vh;
+
+  input
+  {
+    pointer-events: none;
+    background-color: #eeeeee;
+  }
+
+  .div__arrows
+  {
+    .button__arrow
+    {
+      border: none;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0;
+
+      .botao
+      {
+        width: 100%;
+        height: 100%;
+        color: #265a88;
+      }
+    }
+  }
+
+  .div_buttons
+  {
+    .button__concluir
+    {
+      background-color: rgb(43, 191, 43);
+      border: none;
+      border-radius: 10px;
+      height: 45px;
+      color: white;
+      width: 160px;
+
+      &:hover
+      {
+        background-color: rgb(72, 210, 72);
+      }
+    }
+  }
+}
+
+
+
+/* ========== TABELA ANDAMENTO ========== */
+
+.div__tabela
+{
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 10px;
+
+  .tabela
+  {
+    width: 100%;
+    text-align: center;
+
+    .tabela__thead
+    {
+      background-color: #346692;
+      color: white;
+      height: 50px;
+      border: 1px solid black;
+
+    }
+
+    .tabela__tbody
+    {
+      td
+      {
+        height: 40px;
+        width: 33%;
+      }
+
+      tr
+      {
+        border: 1px solid black;
+      }
+
+    }
+
+  }
+
+}
+
+
+
+
+.button__andamento
+{
+  background-color: #265a88;
+  border: none;
+  border-radius: 10px;
+  height: 45px;
+  color: white;
+  width: 260px;
+
+  &:hover
+  {
+    background-color: #3f79ac;
+  }
+}
+
+.button__atender
+{
+  background-color: rgb(43, 191, 43);
+  border: none;
+  border-radius: 10px;
+  height: 45px;
+  color: white;
+  width: 260px;
+}
+
+
+/* ========== BUTTON VOLTAR ========== */
+.button__voltar
+{
+  background-color: #265a88;
+  border: none;
+  border-radius: 10px;
+  height: 45px;
+  color: white;
+  width: 160px;
+
+  &:hover
+  {
+    background-color: #3f79ac;
+  }
+}
+
+/* ========== BUTTON CANCELAR ========= */
+.button__cancelar
+{
+  background-color: rgb(255, 47, 47);
+  border: none;
+  border-radius: 10px;
+  height: 45px;
+  color: white;
+  width: 260px;
+
+  &:hover
+  {
+    background-color: rgb(255, 55, 55);
+  }
+}

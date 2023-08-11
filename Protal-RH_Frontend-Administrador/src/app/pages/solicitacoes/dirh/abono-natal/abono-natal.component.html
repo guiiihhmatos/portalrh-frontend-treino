@@ -1,0 +1,122 @@
+<div class="d-flex flex-column justify-content-center align-items-center my-5">
+
+  <div class="mt-5">
+    <h3>Lista de Solicitações - Abono Natal </h3>
+  </div>
+
+  <div class="filtro__container d-flex flex-column justify-content-between shadow" *ngIf="divFiltro">
+
+    <div class="w-100 filtros__botoes">
+      <button class="button_search" (click)="ativarFiltro('anoExercicio')">Pesquisar por exercício</button>
+      <button class="button_search" (click)="ativarFiltro('mes')">Pesquisar por mês</button>
+      <!-- <button>Pesquisar </button> -->
+    </div>
+
+    <div class="mx-5 w-100 filters">
+
+        <div class="default__filter">
+          <input matInput type="text" (keyup)="doFilter($any($event.target).value)" placeholder="Filtro padrão">
+        </div>
+
+        <div>
+
+        </div>
+
+        <div class="secretaria__filter" *ngIf="filtroMes">
+
+          <select class="form-select pointer" aria-label="Default select example" [(ngModel)]="mes" (change)="getAllAbonoByMes()">
+
+            <option value="" disabled> Selecione o mês </option>
+            <option value="1">Janeiro</option>
+            <option value="2">Fevereiro</option>
+            <option value="3">Março</option>
+            <option value="4">Abril</option>
+            <option value="5">Maio</option>
+            <option value="6">Junho</option>
+            <option value="7">Julho</option>
+            <option value="8">Agosto</option>
+            <option value="9">Setembro</option>
+            <option value="10">Outubro</option>
+            <option value="11">Novembro</option>
+            <option value="12">Dezembro</option>
+
+          </select>
+
+        </div>
+
+        <div class="secretaria__filter" *ngIf="filtroAnoExercicio">
+
+          <select class="form-select pointer" aria-label="Default select example" [(ngModel)]="anoExercicio" (change)="getAllAbonoByAnoExercicio()">
+
+            <option value=""> Selecione o Ano de exercício </option>
+            <option [ngValue]="item" *ngFor="let item of anosExercicio"> {{ item }} </option>
+
+          </select>
+
+        </div>
+
+    </div>
+
+    <!-- <div class="background-primary d-flex justify-content-center align-items-center px-3">
+
+      <mat-icon class="mat-18 color-white">search</mat-icon>
+    </div> -->
+
+  </div>
+  <!--div filtro -->
+
+  <div class="botao__ativar__filtro">
+    <button (click)="exportexcel()" class="botao__ativar__filtro-botao">Exportar Excel</button>
+    <button class="botao__ativar__filtro-botao" (click)="adicionarFiltro()"> {{ divFiltro? "Ocultar Filtro" : "Usar Filtro"}} </button>
+  </div>
+
+  <div class="listar__container shadow mt-3">
+
+    <table mat-table #table [dataSource]="dataSource" matSort class="tabela" id="excel-table">
+
+      <ng-container matColumnDef="matricula">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Matrícula </th>
+        <td mat-cell *matCellDef="let element"> {{element.matricula || '-'}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="cpf">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> CPF </th>
+        <td mat-cell *matCellDef="let element"> {{element.cpf}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="nome">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome </th>
+        <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="dtPedido">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Data do Pedido </th>
+        <td mat-cell *matCellDef="let element"> {{element.dtPedido | date : 'dd/MM/yyyy'}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="exercicio">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Exercício </th>
+        <td mat-cell *matCellDef="let element"> {{element.exercicio}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="dtAniversario">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Data de Nascimento </th>
+        <td mat-cell *matCellDef="let element"> {{ element.dtAniversario | date : 'dd/MM/yyyy' }} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+
+    <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20, 50, 100]">
+    </mat-paginator>
+
+
+  </div>
+
+  <div class="listar__container mt-5">
+    <button class="button__back" (click)="back()">Voltar</button>
+  </div>
+
+</div>

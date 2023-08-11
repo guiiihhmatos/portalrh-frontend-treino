@@ -1,0 +1,135 @@
+/* ========== LISTA CONTAINER ========== */
+
+.listar__container {
+  width: 70vw;
+  border-radius: 10px;
+}
+
+/* ========== FILTRO ========== */
+
+.filtro__container {
+  margin-top: 5vh;
+  width: 70%;
+  background-color: white;
+
+  .filtros__botoes {
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 60px;
+
+    .button_search {
+      border: none;
+      background-color: #265a88;
+      color: white;
+      font-weight: 500;
+      height: 40px;
+      width: 250px;
+      border-radius: 10px;
+    }
+
+    .button_search:hover {
+      background-color: #5586b1;
+    }
+  }
+
+}
+
+
+
+/* ========== TABELA ========== */
+
+.tabela {
+  th {
+    background-color: #265a88;
+    color: white;
+    font-size: 14px;
+    text-align: left;
+  }
+
+  td {
+    border-bottom: 1px solid #E0E0E0;
+  }
+
+  td:nth-child(1) {
+    width: 5%;
+  }
+
+  td:nth-child(2) {
+    width: 20%;
+  }
+
+  td:nth-child(3) {
+    width: 20%;
+  }
+
+  td:nth-child(4) {
+    width: 5%;
+    padding-left: 20px;
+  }
+
+  td:nth-child(5) {
+    width: 10%;
+  }
+
+  td:nth-child(6) {
+    width: 10%;
+  }
+
+  td:nth-child(7) {
+    width: 10%;
+  }
+
+  tr:hover {
+    background-color: #f4f4f4;
+  }
+
+}
+
+
+
+/* ========== ADICIONAR FILTRO ========== */
+
+.botao__ativar__filtro {
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5vh;
+
+  .botao__ativar__filtro-botao {
+    height: 40px;
+    width: 160px;
+    border: none;
+    color: white;
+    background-color: #265a88;
+    border-radius: 10px;
+  }
+
+  .default__filter input {
+    height: 40px;
+    padding-top: 10px;
+    padding-left: 10px;
+    border: none;
+    border-bottom: 1px solid gray;
+    outline: 0;
+  }
+
+}
+
+/* ========== BUTTON VOLTAR ========== */
+.button__voltar
+{
+  background-color: #265a88;
+  border: none;
+  border-radius: 10px;
+  height: 45px;
+  color: white;
+  width: 160px;
+
+  &:hover
+  {
+    background-color: #3f79ac;
+  }
+}

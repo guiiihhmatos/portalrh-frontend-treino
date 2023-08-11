@@ -1,0 +1,57 @@
+<div class="d-flex flex-column justify-content-center align-items-center">
+
+  <div class="novo__title mt-5 mb-3">
+    <h1>Alterar Senha</h1>
+  </div>
+
+  <div class="novo__container shadow">
+
+    <div class="my-3">
+      <p class="text-center" style="color: red;">{{alertSenha}}</p>
+    </div>
+
+    <form [formGroup]="alterarSenhaForm">
+
+      <div class="row d-flex align-items-center justify-content-center my-3 ">
+
+        <div class="col-md-8">
+          <div class="form-label">Senha Atual</div>
+          <input class="form-control" formControlName="senhaAtual" type="password">
+        </div>
+
+      </div><!-- Nova senha -->
+
+      <div class="row d-flex align-items-center justify-content-center my-3 ">
+
+        <div class="col-md-8">
+          <div class="form-label">Nova Senha</div>
+          <input class="form-control" formControlName="novaSenha" type="password" (keydown)="clearError()">
+        </div>
+
+      </div><!-- Nova senha -->
+
+      <div class="row d-flex align-items-center justify-content-center my-3 ">
+
+        <div class="col-md-8">
+          <div class="form-label">Confirmar Senha</div>
+          <input class="form-control" formControlName="confirmarSenha" type="password" (keydown)="clearError()">
+        </div>
+
+      </div><!-- Confirmar senha-->
+
+
+    </form>
+
+    <div class="row d-flex justify-content-center mt-5 mb-3">
+
+      <div class="col-md-3 text-center">
+
+        <button class="default__button" (click)="alterarSenha(alterarSenhaForm.value)">Alterar Senha</button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

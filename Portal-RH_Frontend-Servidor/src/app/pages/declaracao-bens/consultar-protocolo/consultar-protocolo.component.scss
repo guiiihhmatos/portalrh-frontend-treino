@@ -1,0 +1,22 @@
+.container-fluid{
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  min-height: calc(100vh - 80px - 14vh);
+
+  @media only screen and (max-width: 363px){
+    h2{
+      font-size: 20px;
+    }
+  }
+}
+
+.consulta{
+  min-width: 50vw;
+  .form__consultar-protocolo{
+    .form-group{
+       width: 50%;
+       min-width: max-content;
+    }
+  }
+}

@@ -1,0 +1,96 @@
+.menu-lateral
+{
+  height: 100vh;
+
+  .menu-lateral__titulo h4
+  {
+    color: white;
+  }
+
+  .menu-lateral__corpo
+  {
+    height: 90vh;
+    margin-top: 10vh;
+
+    li a.active, li.active
+    {
+      color: white;
+      background-color: #4c83b3;
+    }
+
+    .nav-item
+    {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin: 10px 0;
+      cursor: pointer;
+      width: 87%;
+      margin-left: 5%;
+      // margin-right: 10%;
+      border-radius: 7px;
+    }
+    .nav-item:hover, .active
+    {
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    }
+
+    .icone
+    {
+      color: white;
+    }
+
+    .nav-link
+    {
+      width: 70%;
+      color: white;
+    }
+
+    .nav-item:hover
+    {
+      background-color: #4c83b3;
+      transition: 0.1s;
+    }
+
+  }
+
+  .menu-lateral__footer p
+  {
+    color: white;
+    font-size: 12px;
+  }
+
+  .menu__imgs{
+    p > img.braso_menu{
+      width: calc(109px * 0.8);
+      height: calc(103px * 0.8);
+    }
+    p > img.logo_menu{
+      width: calc(235px *0.8);
+      height: calc(63px * 0.8);
+    }
+  }
+
+
+}
+
+@media only screen and (max-width: 1550px){
+  .menu-lateral{
+
+    .menu-lateral__titulo h4
+    {
+      color: white;
+      font-size: 20px;
+    }
+
+    .nav-item{
+      font-size: 12px;
+    }
+  }
+}
+
+@media only screen and (max-width: 1400px){
+  .menu-lateral{
+    display: none !important;
+  }
+}

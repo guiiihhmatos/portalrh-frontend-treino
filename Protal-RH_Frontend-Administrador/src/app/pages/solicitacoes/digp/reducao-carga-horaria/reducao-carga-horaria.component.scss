@@ -1,0 +1,129 @@
+/* ========== LISTA CONTAINER ========== */
+
+.listar__container
+{
+  width: 70vw;
+  border-radius: 10px;
+
+  .button__back
+  {
+    border: none;
+    background-color: #265a88;
+    color: white;
+    font-weight: 500;
+    height: 40px;
+    width: 160px;
+    border-radius: 10px;
+    float: right;
+  }
+
+  .button__back:hover
+  {
+    background-color: #5586b1;
+  }
+}
+
+/* ========== TABELA ========== */
+
+.tabela
+{
+  th
+  {
+    background-color: #265a88;
+    color: white;
+    font-size: 14px;
+  }
+
+  td
+  {
+    border-bottom: 1px solid #E0E0E0;
+  }
+
+  td:nth-child(1),
+  td:nth-child(2)
+  {
+    width: 3%;
+  }
+
+  td:nth-child(3)
+  {
+    width: 3%;
+  }
+
+  td:nth-child(4)
+  {
+    width: 20%;
+  }
+
+  td:nth-child(5)
+  {
+    width: 35%;
+  }
+
+  td:nth-child(6)
+  {
+    width: 15%;
+  }
+
+
+  td:nth-child(7)
+  {
+    width: 15%;
+  }
+
+
+  tr:hover
+  {
+    cursor: pointer;
+    background-color: #f4f4f4;
+  }
+
+}
+
+
+
+/* ========== ADICIONAR FILTRO ========== */
+
+.botao__ativar__filtro
+{
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5vh;
+
+  .default__filter
+  {
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+  }
+
+  .default__filter input
+  {
+    height: 40px;
+    padding-top: 10px;
+    padding-left: 10px;
+    border: none;
+    border-bottom: 1px solid gray;
+    outline: 0;
+  }
+
+  .botao__ativar__filtro-botao
+  {
+    height: 40px;
+    width: 160px;
+    border: none;
+    color: white;
+    background-color: #265a88;
+    border-radius: 10px;
+  }
+
+  .botao__ativar__filtro-botao:nth-child(1)
+  {
+    margin-right: 30px;
+  }
+
+}

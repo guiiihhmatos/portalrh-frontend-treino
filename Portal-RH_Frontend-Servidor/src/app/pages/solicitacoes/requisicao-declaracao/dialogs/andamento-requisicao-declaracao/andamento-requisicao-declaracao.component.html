@@ -1,0 +1,28 @@
+<h1 mat-dialog-title>Andamento: Requisição de Declaração</h1>
+<hr class="m-0">
+<div mat-dialog-content *ngIf="solicitacao.andamento.length > 0 && !solicitacao.concluido">
+  <p><strong>Tipo de Requisição: </strong> {{solicitacao.tipo}} </p>
+  <p><strong>Protocolo Solicitação: </strong>{{solicitacao.id.toString().padStart(4,"0")}}</p>
+  <p><strong>Data do andamento: </strong> {{andamento?.dataOcorrencia | date: 'dd/MM/YYYY'}} </p>
+  <p><strong>Andamento atual: </strong> {{andamento?.observacao}} </p>
+  <span *ngIf="arquivos.length > 0"><strong class="text-center">Arquivos anexados: <br></strong>
+    <span class="d-flex gap-3 align-items-center" *ngFor="let arquivo of arquivos">{{arquivo.nomeArquivo}}
+      <span class="material-symbols-outlined d-flex cursor-pointer text-pmsv-primary" (click)="verArquivo(arquivo.urlDownload, 'visualizar', protocolo)">visibility</span>
+      <span class="material-symbols-outlined d-flex cursor-pointer text-pmsv-secondary" (click)="verArquivo(arquivo.urlDownload, 'baixar', protocolo)">download</span>
+      <br>
+    </span>
+  </span>
+</div>
+<div mat-dialog-content *ngIf="solicitacao.andamento.length === 0 && !solicitacao.concluido">
+  <p><strong>Tipo de Requisição: </strong> {{solicitacao.tipo}} </p>
+  <p><strong>Protocolo Solicitação: </strong>{{solicitacao.id.toString().padStart(4,"0")}}</p>
+  <p class="text-center text-danger">Solicitação aguardando atendimento...</p>
+</div>
+<div mat-dialog-content *ngIf="solicitacao.concluido">
+  <p><strong>Protocolo Solicitação: </strong>{{solicitacao.id.toString().padStart(4,"0")}}</p>
+  <p class="text-center text-success">Solicitação Atendida!.</p>
+  <p class="text-center" *ngIf="arquivos.length > 0"><strong>Arquivos anexados: <br></strong> <a class="cursor-pointer" *ngFor="let arquivo of arquivos">{{arquivo.nomeArquivo}}<br></a></p>
+</div>
+<div mat-dialog-actions class="d-flex justify-content-center">
+  <button mat-button mat-dialog-close cdkFocusInitial color="secondary">OK</button>
+</div>

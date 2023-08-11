@@ -1,0 +1,43 @@
+//variaveis
+
+$primary-color : #346692;
+$secondary-color : #4c83b3;
+html{
+  position: relative;
+  top: 0px !important;
+  left: 0px !important;
+  right: 0px !important;
+}
+
+
+.bg-primary-servidor {
+  background-color: $primary-color !important;
+}
+
+.bg-secondary-servidor {
+  background-color: $secondary-color !important;
+}
+
+.btn-pmsv,
+.btn-pmsv-primary {
+  width: max-content !important;
+}
+
+input.form-control[type="text"]:read-only,
+input.form-control[type="number"]:read-only,
+input.form-control[type="date"]:read-only,
+textarea:read-only,
+input.form-control:read-only:focus,
+textarea:read-only:focus {
+  background-color: #E9ECEF;
+}
+
+
+select[readonly]{
+  background-color: #E9ECEF;
+  pointer-events: none;
+}
+
+.font-100{font-size: 100px}.font-90{font-size: 90px}.font-80{font-size: 80px}.font-70{font-size: 70px}
+.font-60{font-size: 60px}.font-50{font-size: 50px}.font-40{font-size: 40px}.font-30{font-size: 30px}
+.font-20{font-size: 20px}.font-10{font-size: 10px}

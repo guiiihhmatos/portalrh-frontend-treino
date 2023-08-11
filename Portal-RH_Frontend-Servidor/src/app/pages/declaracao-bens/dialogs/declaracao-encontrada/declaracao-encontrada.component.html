@@ -1,0 +1,27 @@
+<h1 mat-dialog-title class="text-success text-center"> Declaração encontrada !</h1>
+<div mat-dialog-content>
+  <table>
+    <tr>
+      <th>Protocolo: </th>
+      <td>{{data.id}}</td>
+    </tr>
+    <tr>
+      <th>Exercício: </th>
+      <td>{{data.exercicio}}</td>
+    </tr>
+    <tr>
+      <th>Data do envio: </th>
+      <td>{{data.dtAtualizacao | date: 'dd/MM/YYYY - HH:mm'}}</td>
+    </tr>
+  </table>
+  <p class="mt-3"> Em dúvidas, entre em contato com Gestão de Pessoas - (13) 3579-1448 </p>
+</div>
+<div mat-dialog-actions class="d-flex justify-content-between">
+  <div class="action">
+    <button class="btn bg-pmsv-primary text-white" (click)="onClose()"> Fechar </button>
+  </div>
+  <div class="actions d-flex gap-2">
+    <button class="btn btn-danger" (click)="redirectToRetificacao()">Retificar</button>
+    <button class="btn btn-success" (click)="redirectToPDF()">Imprimir</button>
+  </div>
+</div>

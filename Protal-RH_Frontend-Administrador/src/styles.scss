@@ -1,0 +1,43 @@
+//variaveis
+
+.pointer
+{
+  cursor: pointer;
+}
+
+.default__button
+{
+  background-color:  #265a88;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  height: 45px;
+  width: 160px;
+}
+
+.default__button:hover
+{
+  background-color: #4f7da6;
+  transition: 0.5s;
+}
+
+/* === padrao de cores === */
+.color-green
+{
+  color: rgb(43, 191, 43);
+}
+
+.color-gray
+{
+  color: gray;
+}
+
+.color-red
+{
+  color: rgb(227, 39, 39);
+}
+
+.color-primary
+{
+  color: #265a88;
+}

@@ -1,0 +1,78 @@
+<section class="formulario-quinquenio container-fluid p-3 m-0 d-flex flex-column">
+  <h2 class="text-center mt-5"> Solicitação de Contagem de Licença Prêmio </h2>
+
+  <div class="div_formulario p-2">
+    <a type="button" class="align-self-baseline mb-3 btn btn-secondary" routerLink="../../">Voltar</a>
+    <form class="formQuinquenio" [formGroup]="formQuinquenio">
+      <div class="form-group">
+        <label for="nome" class="form-label">Nome:</label>
+        <input type="text" name="nome" id="nome" class="form-control" formControlName="nome" readonly
+          autocomplete="off">
+      </div>
+      <div class="form-group row">
+        <div class="form-group col">
+          <label for="registro" class="form-label">Registro:</label>
+          <input type="number" name="registro" id="registro" class="form-control" formControlName="matricula" readonly
+            autocomplete="off">
+        </div>
+        <div class="form-group col-7">
+          <label for="cpf" class="form-label">CPF:</label>
+          <input type="text" name="cpf" id="cpf" class="form-control" formControlName="cpf" mask="000.000.000-00"
+            readonly autocomplete="off">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="endereco" class="form-label">Endereço:</label>
+        <input type="text" name="endereco" id="endereco" class="form-control" formControlName="endereco" readonly
+          autocomplete="off">
+      </div>
+      <div class="form-group row">
+        <div class="form-group col-sm">
+          <label for="bairro" class="form-label">Bairro:</label>
+          <input type="text" name="bairro" id="bairro" class="form-control" formControlName="bairro" readonly
+            autocomplete="off">
+        </div>
+        <div class="form-group col-sm">
+          <label for="cidade" class="form-label">Cidade:</label>
+          <input type="text" name="cidade" id="cidade" class="form-control" formControlName="municipio" readonly
+            autocomplete="off">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="cargo" class="form-label">Cargo:</label>
+        <input type="text" name="cargo" id="cargo" class="form-control" formControlName="cargo" readonly
+          autocomplete="off">
+      </div>
+      <div class="form-group">
+        <label for="secretaria" class="form-label">Secretaria:</label>
+        <input type="text" name="secretaria" id="secretaria" class="form-control" formControlName="secretaria" readonly
+          autocomplete="off">
+      </div>
+      <!--Desabilitado-->
+      <div class="form-group">
+        <label for="Telefone" class="form-label">Telefone:</label>
+        <input type="text" name="Telefone" id="Telefone" mask="(00) 0 0000-0000||(00) 0000-0000" class="form-control"
+          onkeypress="return event.charCode >= 48 && event.charCode <= 57" formControlName="telefone">
+      </div>
+      <div class="form-group">
+        <label for="periodo" class="form-label">Período:</label>
+        <select name="periodo" id="periodo" class="form-select" formControlName="periodo">
+          <option value="" selected disabled>--- Selecione o período ---</option>
+          <option value="90 dias para fruição oportuna"> 90 dias para fruição oportuna </option>
+          <option value="45 dias em pecúnia e 45 para fruição portuna"> 45 dias em pecúnia e 45 para fruição oportuna
+          </option>
+        </select>
+      </div>
+
+      <div class="form-group mt-3 d-flex align-items-center">
+        <input type="checkbox" name="confirmacao" id="confirmacao" #confirmacao>
+        <label for="confirmacao" class="form-label mx-3 text-danger">Declaro estar ciente dos termos da Abertura de contagem de licença-prêmio: Lei 1780, de 6 de junho de 1978 . Artigos 210 a Art. 217. Circular 030/22-SEGES</label>
+      </div>
+
+      <div class="action mt-4 d-flex justify-content-center">
+        <button class="btn-pmsv btn-pmsv-primary" (click)="salvarSolicitacao(formQuinquenio.value)">Enviar
+          Solicitação</button>
+      </div>
+    </form>
+  </div>
+</section>

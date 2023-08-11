@@ -1,0 +1,191 @@
+<section id="formulario-recad" class="formulario-recad container-fluid p-3 m-0 d-flex flex-column">
+  <h2 class="text-center"> FORMULÁRIO DE RECADASTRAMENTO</h2>
+
+  <form id="formRecad" [formGroup]="formRecadastramento">
+    <!--Desabilitado-->
+    <div class="form-group">
+      <label for="registro" class="form-label">Registro:</label>
+      <input type="number" name="registro" id="registro" class="form-control" autocomplete="off" readonly formControlName="matricula">
+    </div>
+    <div class="form-group">
+      <label for="nomeSocial" class="form-label">Nome Social:</label>
+      <input type="text" name="nomeSocial" id="nomeSocial" class="form-control" formControlName="nomeSocial" autocomplete="off">
+    </div>
+    <!--Desabilitado ini-->
+    <div class="form-group">
+      <label for="nome" class="form-label">Nome Completo:</label>
+      <div class="inpt-edit">
+        <input type="text" name="nome" id="nome" class="form-control" readonly autocomplete="off" formControlName="nome">
+        <button class="btn-edit" (click)="activeInput('nome', 'editNomeCompleto')"><span class="material-symbols-outlined" id="editNomeCompleto">edit</span></button>
+      </div>
+    </div>
+
+    <!--Arquivo de nome-->
+    <div class="form-group d-flex flex-column my-2" *ngIf="boolFile.nome">
+      <label for="fileNome" class="form-label text-danger text-center">
+        Enviar comprovante para atualizar nome: <br>
+        (Ex: Certidão casamento, Certidão de troca de nome, etc...) - Obrigatório
+      </label>
+      <input class="form-control" type="file" id="fileNome">
+    </div>
+
+    <div class="form-group">
+      <label for="grauInstrucao" class="form-label">Grau de instrução:</label>
+      <div class="inpt-edit">
+        <select name="grauInstrucao" id="grauInstrucao" class="form-select" readonly autocomplete="off" formControlName="grauInstrucao">
+          <option value="" selected disabled>-- Selecione --</option>
+          <option [value]="grauInstrucao.chave" *ngFor="let grauInstrucao of grausInstrucao">{{grauInstrucao.descricao}}</option>
+        </select>
+        <button class="btn-edit" (click)="activeInput('grauInstrucao', 'editGrauInstrucao')"><span class="material-symbols-outlined" id="editGrauInstrucao">edit</span></button>
+      </div>
+    </div>
+
+    <!--Arquivo de grau de instrução-->
+    <div class="form-group d-flex flex-column my-2" *ngIf="boolFile.nome">
+      <label for="fileNome" class="form-label text-danger text-center">
+        Enviar comprovante para atualizar grau de instrução: <br>
+        (Ex: Certidão de conclusão de Ensino Médio, Superior, etc...) - Facultativo
+      </label>
+      <input class="form-control" type="file" id="fileNome">
+    </div>
+    <div class="form-group" *ngIf="servidor.formacaoSuperior && editAreaFormacao">
+      <label for="formacaoSuperior" class="form-label">Área da formação:</label>
+      <div class="inpt-edit">
+        <input type="text" name="formacaoSuperior" id="formacaoSuperior" class="form-control" list="cursos" maxlength="30" readonly autocomplete="off" formControlName="formacaoSuperior" oninput="this.value = this.value.toUpperCase()">
+        <datalist id="cursos">
+          <option [value]="curso.descricao" *ngFor="let curso of cursos">
+        </datalist>
+        <button class="btn-edit" (click)="activeInput('formacaoSuperior','editFormacaoSuperior')"><span class="material-symbols-outlined" id="editFormacaoSuperior">edit</span></button>
+      </div>
+    </div>
+    <div class="form-group" *ngIf="boolAreaFormacao">
+      <label for="formacaoSuperior" class="form-label">Área da formação:</label>
+      <input type="text" name="formacaoSuperior" id="formacaoSuperior" class="form-control" list="cursos" formControlName="formacaoSuperior" oninput="this.value = this.value.toUpperCase()">
+      <datalist id="cursos">
+        <option [value]="curso.descricao" *ngFor="let curso of cursos">
+      </datalist>
+    </div>
+    <div class="form-group">
+      <label for="dataNasc" class="form-label">Data de Nascimento:</label>
+      <input type="date" name="dataNasc" id="dataNasc" class="form-control" readonly autocomplete="off" formControlName="dtNascimento">
+    </div>
+    <div class="form-group">
+      <label for="rg" class="form-label">RG:</label>
+      <input type="text" name="rg" id="rg" class="form-control" readonly autocomplete="off" formControlName="rg">
+    </div>
+    <div class="form-group">
+      <label for="cpf" class="form-label">CPF:</label>
+      <input type="text" name="cpf" id="cpf" class="form-control" readonly autocomplete="off" mask="000.000.000-00" formControlName="cpf">
+    </div>
+    <!--end Desabilitado-->
+    <div class="form-group">
+      <label for="raca" class="form-label">Raça:</label>
+      <select name="raca" id="raca" class="form-select" formControlName="racaCor">
+        <option [value]="racaCor.chave" *ngFor="let racaCor of racas">{{racaCor.descricao}}</option>
+      </select>
+    </div>
+    <!--Desabilitado ini-->
+    <div class="form-group">
+      <label for="localTrabalho" class="form-label">Local de trabalho:</label>
+      <input type="text" name="localTrabalho" id="localTrabalho" class="form-control" readonly autocomplete="off" formControlName="localTrabalho">
+    </div>
+    <div class="form-group">
+      <label for="secretaria" class="form-label">Secretaria:</label>
+      <input type="text" name="secretaria" id="secretaria" class="form-control" readonly autocomplete="off" formControlName="secretaria">
+    </div>
+    <div class="form-group">
+      <label for="cargo" class="form-label">Cargo:</label>
+      <input type="text" name="cargo" id="cargo" class="form-control" readonly autocomplete="off" formControlName="cargo">
+    </div>
+    <!--end Desabilitado-->
+    <div class="form-group">
+      <label for="telefone" class="form-label">Telefone:</label>
+      <input type="text" name="telefone" id="telefone" class="form-control" mask="(00) 0 0000-0000||(00) 0000-0000" formControlName="telefone">
+    </div>
+    <!--Desabilitado ini-->
+    <div class="form-group">
+      <label for="estadoCivil" class="form-label">Estado civíl:</label>
+      <div class="inpt-edit">
+        <select name="estadoCivil" id="estadoCivil" class="form-select" readonly autocomplete="off" formControlName="estadoCivil">
+          <option value="" disabled>-- Selecione --</option>
+          <option [value]="estadoCivil.chave" *ngFor="let estadoCivil of estadosCivis" [disabled]="servidor.estadoCivil != 1 && estadoCivil.chave == '1'">{{estadoCivil.descricao}}</option>
+        </select>
+        <button class="btn-edit" (click)="activeInput('estadoCivil','editEstadoCivil')"><span class="material-symbols-outlined" id="editEstadoCivil">edit</span></button>
+      </div>
+    </div>
+    <div class="form-group" *ngIf="servidor.estadoCivil == 2 && editNomeConjuge">
+      <label for="nomeConjuge" class="form-label">Nome do conjugê:</label>
+      <div class="inpt-edit">
+        <input type="text" name="nomeConjuge" id="nomeConjuge" class="form-control" readonly autocomplete="off" formControlName="nomeConjuge" oninput="this.value = this.value.toUpperCase()">
+        <button class="btn-edit" (click)="activeInput('nomeConjuge','editNomeConjuge')"><span class="material-symbols-outlined" id="editNomeConjuge">edit</span></button>
+      </div>
+    </div>
+    <!--end Desabilitado-->
+    <div class="form-group" *ngIf="boolNomeConjuge">
+      <label for="nomeConjuge" class="form-label">Nome do conjugê:</label>
+      <input type="nomeConjuge" name="nomeConjuge" id="nomeConjuge" class="form-control" formControlName="nomeConjuge" oninput="this.value = this.value.toUpperCase()">
+    </div>
+    <div class="form-group">
+      <label for="email" class="form-label">Email:</label>
+      <input type="email" name="email" id="email" class="form-control" formControlName="email">
+    </div>
+    <!--Desabilitado ini-->
+    <div class="form-group">
+      <label for="cep" class="form-label">CEP:</label>
+      <div class="inpt-edit">
+        <input type="text" name="cep" id="cep" class="form-control" mask="00.000-000" readonly autocomplete="off" formControlName="cep" (blur)="getCep($any($event.target).value)">
+        <button class="btn-edit" (click)="activeInput('cep','editCep')"><span class="material-symbols-outlined" id="editCep">edit</span></button>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="tipoLogradouro" class="form-label">Tipo do logradouro:</label>
+      <select name="tipoLogradouro" id="tipoLogradouro" class="form-control" readonly autocomplete="off" formControlName="tipoLogradouro">
+        <option [value]="tipoLogradouro.chave" *ngFor="let tipoLogradouro of tiposLogradouro">{{tipoLogradouro.descricao}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="endereco" class="form-label">Endereço:</label>
+      <input type="text" name="endereco" id="endereco" class="form-control" readonly autocomplete="off" formControlName="endereco">
+    </div>
+    <div class="form-group">
+      <label for="numeroEndereco" class="form-label">Numero:</label>
+      <input type="number" name="numeroEndereco" id="numeroEndereco" class="form-control" readonly autocomplete="off" formControlName="numeroEndereco">
+    </div>
+    <div class="form-group">
+      <label for="complementoEndereco" class="form-label">Complemento do endereço:</label>
+      <input type="text" name="complementoEndereco" id="complementoEndereco" class="form-control" readonly autocomplete="off" formControlName="complementoEndereco">
+    </div>
+    <div class="form-group">
+      <label for="municipio" class="form-label">Município:</label>
+      <!-- <input type="text" name="municipio" id="municipio" class="form-control" readonly autocomplete="off" formControlName="municipio"> -->
+      <select type="text" name="municipio" id="municipio" class="form-control" readonly autocomplete="off" formControlName="municipio">
+        <option [value]="municipio.codigo" *ngFor="let municipio of municipios">{{municipio.nome}}</option>
+      </select>
+
+    </div>
+    <div class="form-group">
+      <label for="bairro" class="form-label">Bairro:</label>
+      <input type="text" name="bairro" id="bairro" class="form-control" readonly autocomplete="off" formControlName="bairro">
+    </div>
+
+  </form>
+
+  <form class="formChecks mt-3" [formGroup]="formChecks" id="formChecks">
+    <div class="form-check d-flex align-items-baseline gap-3">
+      <input type="checkbox" name="termo" id="termo" class="form-check-label" formControlName="termo">
+      <label for="termo" class="form-check-label text-danger">
+        Declaro que as informações acima prestadas são verdadeiras, e assumo a inteira responsabilidade pelas mesmas.
+      </label>
+    </div>
+    <div class="form-check d-flex align-items-baseline gap-3">
+      <input type="checkbox" name="autorizacao" id="autorizacao" class="form-check-label" formControlName="autorizacao">
+      <label for="autorizacao" class="form-check-label text-danger">
+        Nos termos da Lei Federal nº 13.709/18 - LGPD, autorizo a Prefeitura Municipal de São Vicente a realizar o
+        tratamento de
+        meus dados pessoais, e a utilizar desses meios de contato para enviar informações e oportunidades de
+        transferência.
+      </label>
+    </div>
+  </form>
+
+</section>

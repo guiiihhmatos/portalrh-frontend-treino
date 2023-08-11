@@ -1,0 +1,45 @@
+section.formulario-rch {
+  min-height: calc(100vh - 80px - 14vh);
+
+  div.div_formulario {
+    width: 50%;
+    min-width: 500px;
+    align-self: center;
+
+    form#formRCH{
+      textarea#justificativa{
+        min-height: 100px;
+      }
+      div.form-group{
+        div {
+          select#tipo{
+            border-radius: 5px 0 0 5px;
+          }
+          button.btn_help{
+            border-radius: 0 5px 5px 0;
+            &:hover{
+              background-color: #1c4467 !important;
+            }
+          }
+        }
+      }
+
+      .form-group
+      {
+        margin-top: 7px;
+        margin-bottom: 7px;
+      }
+    }
+
+    @media only screen and (max-width: 550px) {
+      min-width: 280px;
+      width: 90%;
+    }
+
+    @media only screen and (max-width: 450px) {
+      width: 100%;
+    }
+
+
+  }
+}

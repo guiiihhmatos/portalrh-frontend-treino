@@ -1,0 +1,48 @@
+.protocolo
+{
+  height: 82.8vh;
+  width: 50%;
+  margin: 0 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.titulo
+{
+  color: #449d44;
+}
+
+.card-header
+{
+  background-color: #449d44;
+  color: white;
+}
+
+.botao
+{
+  color: white;
+  background-color: #346692;
+  border: none;
+  height: 40px;
+  width: 120px;
+  border-radius: 10px;
+}
+
+@media only screen and (max-width: 1000px)
+{
+  .protocolo
+  {
+    width: 70%;
+    margin: 0 15%;
+  }
+}
+
+@media only screen and (max-width: 600px)
+{
+  .protocolo
+  {
+    width: 90%;
+    margin: 0 5%;
+  }
+}

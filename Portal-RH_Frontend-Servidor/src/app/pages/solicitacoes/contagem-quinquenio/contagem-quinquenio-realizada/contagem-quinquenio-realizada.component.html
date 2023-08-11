@@ -1,0 +1,25 @@
+<section class="container-fluid solicitacao-realizada">
+  <div class="card mt-5">
+    <div class="card-header" id="top-header">
+      Solicitação Realizada: Contagem de Licença Prêmio
+    </div>
+    <div class="card-body">
+      <h5 class="card-title titulo">Você já solicitou: Contagem de Licença Prêmio </h5>
+
+      <div class="textos">
+        <p class="card-text"><strong> N° do protocolo : </strong> {{protocolo.id.toString().padStart(4,"0")}} </p>
+        <p class="card-text"><strong> Nome soliciante : </strong> {{protocolo.nome}} </p>
+        <p class="card-text"><strong> Registro solicitante : </strong> {{protocolo.matricula}} </p>
+        <p class="card-text"><strong> Data da solicitação : </strong> {{protocolo.dtPedido | date: 'dd/MM/YYYY'}} </p>
+        <hr *ngIf="andamento">
+        <p class="card-text" *ngIf="andamento"><strong> Andamento : </strong> {{andamento.observacao}}</p>
+        <p class="card-text" *ngIf="andamento"><strong> Ultima atualização do andamento : </strong> {{andamento.dataOcorrencia | date:'dd/MM/YYYY'}} </p>
+      </div>
+
+    </div>
+
+    <div class="card-footer d-flex justify-content-around ">
+      <button class="btn text-white bg-pmsv-primary" routerLink="/solicitacoes/inicio">Voltar às solicitações</button>
+      <button class="btn text-white btn-success" (click)="redirectToPDF()">Imprimir</button>
+  </div>
+  </div>

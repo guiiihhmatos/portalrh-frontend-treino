@@ -1,0 +1,26 @@
+<div class="declarada">
+  <div class="card">
+    <div class="card-header" id="top-header">
+      Declaração Anual de Bens
+    </div>
+    <div class="card-body">
+      <h5 class="card-title titulo">Você já realizou a declaração em {{exercicio}}</h5>
+
+      <div class="textos my-5">
+        <p class="card-text"><strong> N° do protocolo : </strong> {{protocolo?.id}} </p>
+        <p class="card-text"><strong> Nome : </strong> {{protocolo?.nome}} </p>
+        <p class="card-text"><strong> Registro : </strong> {{protocolo?.matricula}} </p>
+        <p class="card-text"><strong>Data de envio : </strong> {{protocolo?.dtAtualizacao | date: 'dd/MM/YYYY - HH:mm'}} </p>
+      </div>
+
+      <div class="d-flex flex-column align-items-center">
+        <div class="d-flex justify-content-between w-100">
+          <button class="btn text-white btn-success mt-3" (click)="redirectToPDF()">Imprimir</button>
+          <button class="btn text-white btn-danger mt-3" (click)="redirectToRetificacao(protocolo)">Retificar</button>
+        </div>
+        <button class="btn-pmsv text-white btn-pmsv-primary mt-3" routerLink="/declaracao-bens">Voltar às delcarações</button>
+      </div>
+
+    </div>
+  </div>
+</div>

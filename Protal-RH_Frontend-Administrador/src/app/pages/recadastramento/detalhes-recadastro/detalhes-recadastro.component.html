@@ -1,0 +1,516 @@
+<div class="d-flex flex-column justify-content-center align-items-center mt-5">
+
+  <div class="mb-3">
+    <h5>Informações do Servidor {{nomeServidor}} </h5>
+  </div>
+
+  <div class="novo__container shadow">
+    <div style="min-height: 550px;">
+      <form [formGroup]="servidor">
+
+        <div *ngIf="containerNome">
+          <div class="row d-flex align-items-center justify-content-center my-3 mb-5">
+
+            <div class="col-md-10">
+              <div class="form-label">Nome</div>
+              <input class="form-control" formControlName="nome" [class]="classNome" id="nome" *ngIf="valNome"
+                [style.background-color]="cor" [style.color]="corTexto">
+              <input class="form-control" formControlName="nome" [class]="classNome" id="nome" *ngIf="!valNome">
+            </div>
+
+          </div><!--Row Nome-->
+
+          <div class="row d-flex align-items-center justify-content-center my-3 mb-5">
+
+            <div class="col-md-5">
+              <div class="form-label">Data Nascimento</div>
+              <input class="form-control" formControlName="dtNascimento">
+            </div>
+
+            <div class="col-md-5">
+              <div class="form-label">Nome Social</div>
+              <input class="form-control" formControlName="nomeSocial" [class]="classNomeSocial" id="nomeSocial"
+                *ngIf="valNomeSocial" [style.background-color]="cor" [style.color]="corTexto">
+              <input class="form-control" formControlName="nomeSocial" [class]="classNomeSocial" id="nomeSocial"
+                *ngIf="!valNomeSocial">
+            </div>
+
+          </div><!--Row Data Nascimento e Nome Social -->
+
+          <div class="row d-flex align-items-center justify-content-center mt-3 mb-5">
+
+            <div class="col-md-5">
+              <div class="form-label">CPF</div>
+              <input class="form-control" formControlName="cpf">
+            </div>
+
+            <div class="col-md-5">
+              <div class="form-label">RG</div>
+              <input class="form-control" formControlName="rg">
+            </div>
+
+          </div><!--Row Cpf e rg-->
+
+          <div class="row d-flex align-items-center justify-content-center mt-3 mb-5">
+
+            <div class="col-md-5">
+              <div class="form-label">Raça</div>
+              <input class="form-control" formControlName="racaCor" [class]="classRacaCor" id="racaCor"
+                *ngIf="valRacaCor" [style.background-color]="cor" [style.color]="corTexto">
+              <input class="form-control" formControlName="racaCor" [class]="classRacaCor" id="racaCor"
+                *ngIf="!valRacaCor">
+            </div>
+
+            <div class="col-md-5">
+              <div class="form-label">Telefone</div>
+              <input class="form-control" formControlName="telefone" [class]="classTelefone" id="telefone"
+                mask="(00) 0 0000-0000" *ngIf="valTelefone" [style.background-color]="cor" [style.color]="corTexto">
+              <input class="form-control" formControlName="telefone" [class]="classTelefone" id="telefone"
+                mask="(00) 0 0000-0000" *ngIf="!valTelefone">
+            </div>
+
+          </div><!--Row Cpf e telefone-->
+
+        </div> <!--container nome-->
+
+        <div *ngIf="containerInfo">
+
+          <div class="row d-flex align-items-center justify-content-center mt-3 mb-5">
+
+            <div class="col-md-5">
+              <div class="form-label">Registro</div>
+              <input class="form-control" formControlName="matricula">
+            </div>
+
+            <div class="col-md-5">
+              <div class="form-label">Estado Civil</div>
+              <input class="form-control" formControlName="estadoCivil" [class]="classEstadoCivil" id="estadoCivil"
+                *ngIf="valEstadoCivil" [style.background-color]="cor" [style.color]="corTexto">
+              <input class="form-control" formControlName="estadoCivil" [class]="classEstadoCivil" id="estadoCivil"
+                *ngIf="!valEstadoCivil">
+            </div>
+
+          </div><!--Row registro e estado civil-->
+
+          <div class="row d-flex align-items-center justify-content-center mt-3 mb-5">
+
+            <div class="col-md-10" *ngIf="!nomeConjugeVal">
+              <div class="form-label">Email</div>
+              <input class="form-control" formControlName="email" [class]="classEmail" id="email" *ngIf="valEmail"
+                [style.background-color]="cor" [style.color]="corTexto">
+              <input class="form-control" formControlName="email" [class]="classEmail" id="email" *ngIf="!valEmail">
+            </div>
+
+            <div class="col-md-5" *ngIf="nomeConjugeVal">
+              <div class="form-label">Email</div>
+              <input class="form-control" formControlName="email" [class]="classEmail" id="email" *ngIf="valEmail"
+                [style.background-color]="cor" [style.color]="corTexto">
+              <input class="form-control" formControlName="email" [class]="classEmail" id="email" *ngIf="!valEmail">
+            </div>
+
+            <div class="col-md-5" *ngIf="nomeConjugeVal">
+              <div class="form-label">Nome do Cônjuge</div>
+              <input class="form-control" formControlName="nomeConjuge" [class]="classNomeConjuge" id="nomeConjuge"
+                *ngIf="valNomeConjuge" [style.background-color]="cor" [style.color]="corTexto">
+              <input class="form-control" formControlName="nomeConjuge" [class]="classNomeConjuge" id="nomeConjuge"
+                *ngIf="!valNomeConjuge">
+            </div>
+
+
+          </div><!--Row grau de instrucao e Secretaria-->
+
+          <div class="row d-flex align-items-center justify-content-center mt-3 mb-5">
+
+            <div class="col-md-5">
+              <div class="form-label">Cargo</div>
+              <input class="form-control" formControlName="cargo">
+            </div>
+
+            <div class="col-md-5">
+              <div class="form-label">Secretaria</div>
+              <input class="form-control" formControlName="secretaria">
+            </div>
+
+          </div><!--Row grau de instrucao e Secretaria-->
+
+          <div class="row d-flex align-items-center justify-content-center mt-3 mb-5">
+
+            <div class="col-md-10">
+              <div class="form-label">Local de Trabalho</div>
+              <input class="form-control" formControlName="localTrabalho">
+            </div>
+
+          </div><!--Row local de trabalho e cargo-->
+
+        </div>
+
+
+        <div *ngIf="containerCep">
+
+          <div class="row d-flex align-items-center justify-content-center mt-3 mb-5">
+
+            <div class="col-md-10" *ngIf="!formacaoSuperior">
+              <div class="form-label">Grau de Instrução</div>
+              <input class="form-control" formControlName="grauInstrucao" [class]="classGrauInstrucao"
+                id="grauInstrucao" *ngIf="valGrauInstrucao" [style.background-color]="cor" [style.color]="corTexto">
+              <input class="form-control" formControlName="grauInstrucao" [class]="classGrauInstrucao"
+                id="grauInstrucao" *ngIf="!valGrauInstrucao">
+            </div>
+
+            <div class="col-md-5" *ngIf="formacaoSuperior">
+              <div class="form-label">Grau de Instrução</div>
+              <input class="form-control" formControlName="grauInstrucao" [class]="classGrauInstrucao"
+                id="grauInstrucao" *ngIf="valGrauInstrucao" [style.background-color]="cor" [style.color]="corTexto">
+              <input class="form-control" formControlName="grauInstrucao" [class]="classGrauInstrucao"
+                id="grauInstrucao" *ngIf="!valGrauInstrucao">
+            </div>
+
+            <div class="col-md-5" *ngIf="formacaoSuperior">
+              <div class="form-label">Formação Superior</div>
+              <input class="form-control" formControlName="formacaoSuperior" [class]="classFormacaoSuperior"
+                id="formacaoSuperior" *ngIf="valFormacaoSuperior" [style.background-color]="cor"
+                [style.color]="corTexto">
+              <input class="form-control" formControlName="formacaoSuperior" [class]="classFormacaoSuperior"
+                id="formacaoSuperior" *ngIf="!valFormacaoSuperior">
+            </div>
+
+          </div><!--Row grau de instrução e curso superior-->
+
+          <div class="row d-flex align-items-center justify-content-center mt-3 mb-5">
+
+            <div class="col-md-5">
+              <div class="form-label">CEP</div>
+              <input class="form-control" formControlName="cep" [class]="classCep" id="cep" mask="00.000-000"
+                *ngIf="valCep" [style.background-color]="cor" [style.color]="corTexto">
+              <input class="form-control" formControlName="cep" [class]="classCep" id="cep" mask="00.000-000"
+                *ngIf="!valCep">
+            </div>
+
+            <div class="col-md-5">
+              <div class="form-label">Município</div>
+              <input class="form-control" formControlName="municipio" [class]="classMunicipio" id="municipio"
+                *ngIf="valMunicipio" [style.background-color]="cor" [style.color]="corTexto">
+              <input class="form-control" formControlName="municipio" [class]="classMunicipio" id="municipio"
+                *ngIf="!valMunicipio">
+            </div>
+
+
+
+          </div><!--Row cep e municipio-->
+
+          <div class="row d-flex align-items-center justify-content-center mt-3 mb-5">
+
+            <div class="col-md-5">
+              <div class="form-label">Bairro</div>
+              <input class="form-control" formControlName="bairro" [class]="classBairro" id="bairro" *ngIf="valBairro"
+                [style.background-color]="cor" [style.color]="corTexto">
+              <input class="form-control" formControlName="bairro" [class]="classBairro" id="bairro" *ngIf="!valBairro">
+            </div>
+
+            <div class="col-md-5">
+              <div class="form-label">Endereço</div>
+              <input class="form-control" formControlName="endereco" [class]="classEndereco" id="endereco"
+                *ngIf="valEndereco" [style.background-color]="cor" [style.color]="corTexto">
+              <input class="form-control" formControlName="endereco" [class]="classEndereco" id="endereco"
+                *ngIf="!valEndereco">
+            </div>
+
+          </div><!--Row bairro e endereco-->
+
+          <div class="row d-flex align-items-center justify-content-center mt-3">
+
+            <div class="col-md-5">
+              <div class="form-label">Complemento Endereço</div>
+              <input class="form-control" formControlName="complementoEndereco" [class]="classComplementoEndereco"
+                id="complementoEndereco" *ngIf="valComplementoEndereco" [style.background-color]="cor"
+                [style.color]="corTexto">
+              <input class="form-control" formControlName="complementoEndereco" [class]="classComplementoEndereco"
+                id="complementoEndereco" *ngIf="!valComplementoEndereco">
+            </div>
+
+            <div class="col-md-5">
+              <div class="form-label">Número</div>
+              <input class="form-control" formControlName="numeroEndereco" [class]="classNumeroEndereco"
+                id="numeroEndereco" *ngIf="valNumeroEndereco" [style.background-color]="cor" [style.color]="corTexto">
+              <input class="form-control" formControlName="numeroEndereco" [class]="classNumeroEndereco"
+                id="numeroEndereco" *ngIf="!valNumeroEndereco">
+            </div>
+
+          </div><!--Row numero e complemento endereco-->
+        </div>
+
+        <div *ngIf="containerDependentes">
+
+          <div class="d-flex justify-content-center dependentes__title mt-5">
+            <h2>Dependentes</h2>
+          </div>
+          <div class="div__tabela">
+            <table class="text-center tabela">
+              <thead class="tabela__thead">
+                <tr>
+                  <th>Nome Completo</th>
+                  <th>Data de Nascimento</th>
+                  <th>CPF</th>
+                  <th>Sexo</th>
+                </tr>
+              </thead>
+              <tbody *ngFor="let item of dependentes" class="tabela__tbody">
+                <tr>
+                  <td> {{item.nome}} </td>
+                  <td> {{item.dtNascimento | date : "dd/MM/yyyy"}} </td>
+                  <td *ngIf="item.cpf"> {{ item.cpf | mask: '000.000.000-00'}} </td>
+                  <td *ngIf="!item.cpf"> {{ 'Não possui' }} </td>
+                  <td> {{ item.sexo.toUpperCase() == 'M'? 'Masculino' : 'Feminino' || '-'}} </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div *ngIf="containerAlteracoes">
+          <!-- <div class="row d-flex align-items-center justify-content-center mt-3 mb-5">
+
+             <div class="col-md-4 text-center">
+               <div class="form-label">
+                 <h2>Alterações</h2>
+               </div>
+
+               <div class="form-check" *ngFor="let item of alteracoes">
+                 <input class="form-check-input" type="checkbox" value="" id="alteracoes" checked>
+                 <label class="form-check-label" for="alteracoes">
+                   {{ item }}
+                 </label>
+               </div>
+             </div>
+
+           </div>Row alteracoes -->
+
+          <div class="row d-flex align-items-center justify-content-center mt-3 mb-5">
+
+            <div class="col-md-12 text-center">
+              <div class="form-label">
+                <h2>Arquivos</h2>
+              </div>
+
+              <div *ngIf="arquivos.length > 0" class="div__arquivos">
+                <div *ngFor="let item of arquivos" class="d-flex justify-content-center align-items-center w-100 mb-3">
+                  <div class="div__arquivos-1">
+                    <p> {{item.nomeArquivo}} </p>
+                  </div>
+                  <div class="div__arquivos-2">
+                    <button class="button__visualizar" (click)="verArquivo(item.urlDownload, 'visualizar')"> Visualizar
+                    </button>
+                  </div>
+                  <div class="div__arquivos-3">
+                    <button class="button__baixar" (click)="verArquivo(item.urlDownload, 'baixar')"> Baixar </button>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                {{ arquivoSelecionado }}
+              </div>
+
+              <div *ngIf="arquivos.length == 0">
+                <h4>Não possui arquivos</h4>
+              </div>
+
+            </div>
+
+          </div><!--Row alteracoes-->
+
+          <div class="row d-flex align-items-center justify-content-center div__botoes__validacao 3 mb-5"
+            *ngIf="statusValidacao == 'Aguardando Validação'">
+
+            <div class="col-md-3 d-flex align-items-center justify-content-center">
+              <button class="button__invalidar" data-bs-toggle="modal"
+                data-bs-target="#exampleModal2">Invalidar</button>
+            </div>
+
+            <div class="col-md-3 d-flex align-items-center justify-content-center">
+              <button class="button__validar" data-bs-toggle="modal" data-bs-target="#exampleModal">Validar</button>
+            </div>
+
+          </div><!--Row validar e invalidar-->
+
+          <!-- <iframe src="assets/image/grh.svg" width="250" height="200" > </iframe> -->
+
+          <div class="row d-flex align-items-center justify-content-center div__botoes__validacao 3 mb-5"
+            *ngIf="statusValidacao == 'Validado'">
+
+            <div class="col-md-10 d-flex align-items-center justify-content-center">
+              <h2>Validado em {{ dtValidacao | date : 'dd/MM/yyyy'}} por {{ validador }} </h2>
+            </div>
+
+          </div><!--Row validar e invalidar-->
+
+          <div class="row d-flex align-items-center justify-content-center div__botoes__validacao 3 mb-5"
+            *ngIf="statusValidacao == 'Inválido'">
+
+            <div class="col-md-10 d-flex flex-column align-items-center justify-content-center">
+              <h2>Invalidado em {{ dtValidacao | date : 'dd/MM/yyyy'}} por {{ validador }} </h2>
+              <h2>Motivo : {{ motivoInvalidacao }}</h2>
+            </div>
+
+          </div><!--Row validar e invalidar-->
+
+        </div>
+
+      </form>
+
+    </div>
+    <div class="d-flex justify-content-between div__arrows mb-3">
+
+      <div class="col-md-1 d-flex align-items-center justify-content-center" *ngIf="valArrowLeft">
+
+        <button class="button__arrow" (click)="arrowActive('left')">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-arrow-left-circle-fill botao"
+            viewBox="0 0 16 16">
+            <path
+              d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z" />
+          </svg>
+        </button>
+
+      </div>
+
+      <div class="col-md-1" *ngIf="!valArrowLeft || !valArrowRight"></div>
+
+      <div class="col-md-1 d-flex align-items-center justify-content-center" *ngIf="valArrowRight">
+
+        <button (click)="arrowActive('right')" class="button__arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-arrow-right-circle-fill botao"
+            viewBox="0 0 16 16">
+            <path
+              d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
+          </svg>
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="d-flex justify-content-start div__legenda">
+
+    <div class="legenda shadow d-flex align-items-center justify-content-around">
+
+      <div class="d-flex justify-content-around align-items-center w-25">
+
+        <input type="color" id="head" name="head" value="#e66465" class="form-control w-40" [(ngModel)]="corCinza"
+          disabled>
+        <label for="head" class="w-40">Não Alterados</label>
+
+      </div>
+
+      <div class="d-flex justify-content-around align-items-center w-25">
+
+        <input type="color" id="head" name="head" value="#e66465" class="form-control w-40" [(ngModel)]="cor">
+        <label for="head" class="w-40">Alterados</label>
+
+      </div>
+
+      <div class="d-flex justify-content-around align-items-center w-25">
+
+        <input type="color" id="head" name="head" value="#e66465" class="form-control w-40" [(ngModel)]="corTexto">
+        <label for="head" class="w-40">Cor do Texto</label>
+
+      </div>
+
+      <div class="d-flex justify-content-center align-items-center w-15">
+
+        <button class="button__baixar" (click)="alterarCorInput()">Alterar</button>
+
+      </div>
+
+      <div class="d-flex justify-content-center align-items-center w-15">
+
+        <button class="button__baixar" (click)="alterColorForDefault()">Cores Padrão</button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="d-flex justify-content-center mb-3">
+
+    <div>
+
+      <button class="button__voltar" (click)="backUrl()">Voltar</button>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- Modal Validar-->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Validar Recadastramento</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Você deseja validar o recadastramento do servidor {{ servidorPassed.nome }} ?</p>
+
+        <p class="mt-5"><strong>As alteracoes serão automaticamente enviadas para o GRH.</strong></p>
+
+        <h3>Alterações :</h3>
+        <div class="form-check" *ngFor="let item of alteracoesAuto">
+
+          <input class="form-check-input" type="checkbox" value="" id="alteracoes" checked>
+          <label class="form-check-label" for="alteracoes">
+            {{ item }}
+          </label>
+
+        </div>
+
+        <p class="mt-5"><strong>As alteracoes deverão ser manualmente inseridas no GRH.</strong></p>
+
+        <h3>Alterações :</h3>
+        <div class="form-check" *ngFor="let item of alteracoesManual">
+          <input class="form-check-input" type="checkbox" value="" id="alteracoes" checked>
+          <label class="form-check-label" for="alteracoes">
+            {{ item }}
+          </label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="button__cancelar" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="button__validar" (click)="validarServidor()"
+          data-bs-dismiss="modal">Validar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Invalidar-->
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Invalidar Recadastramento</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="motivo">
+          <div>
+            <div class="form-label">Informe o motivo:</div>
+            <input type="text" class="form-control mb-5" formControlName="motivoInvalidar" [(ngModel)]="teste">
+          </div>
+        </form>
+        <p>Você deseja invalidar o recadastramento do servidor {{ servidorPassed.nome }} ?</p>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="button__cancelar" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="button__invalidar" (click)="naoValidarServidor()"
+          data-bs-dismiss="modal">Invalidar</button>
+      </div>
+    </div>
+  </div>
+</div>

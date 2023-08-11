@@ -1,0 +1,38 @@
+section#rch-realizada {
+  min-height: calc(100vh - 80px - 14vh);
+
+  div.card.content_rch-realizaada {
+    width: 75%;
+    min-width: 400px;
+
+    div.card-body {
+      display: flex;
+      flex-flow: column;
+
+      div.div_table {
+        margin: 0;
+        width: 100%;
+        align-self: center;
+
+        table,
+        mat-paginator {
+          width: 100%;
+        }
+
+        table{
+          tr:hover{
+            background-color: #f0f0f0;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+    @media only screen and (max-width: 415px){
+      &{
+        width: 100%;
+        min-width: 300px;
+      }
+    }
+  }
+}

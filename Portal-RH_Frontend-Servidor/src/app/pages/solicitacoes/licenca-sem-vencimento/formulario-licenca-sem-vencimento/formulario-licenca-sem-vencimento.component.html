@@ -1,0 +1,125 @@
+<section class="formulario-lsv container-fluid p-3 m-0 d-flex flex-column">
+  <h2 class="text-center mt-5"> Solicitação de Licença para tratar de interesses particulares (Licença sem vencimento)
+  </h2>
+
+  <div class="card escolher_licenca mt-5" *ngIf="!confirmLSV">
+    <div class="card-header">
+      <h1 class="card-title fs-5 text-warning w-100 text-center" id="confirmarSolicitacao">Atenção</h1>
+    </div>
+    <div class="card-body d-flex align-items-center">
+      <p class="text-center"><strong> Ao realizar o envio, o servidor deve aguardar o <span class="text-warning">DEFERIMENTO</span> ou <span class="text-warning">INDEFERIMENTO</span> da solicitação em exercício</strong></p>
+    </div>
+    <div class="card-footer d-flex flex-column flex-md-row justify-content-around align-items-center gap-2">
+      <button class="btn btn-secondary" routerLink="/solicitacoes/inicio">Cancelar</button>
+      <button class="btn bg-pmsv-primary text-white" (click)="releaseForm()">Solicitar licença</button>
+    </div>
+  </div>
+
+  <div class="div_formulario p-2" *ngIf="confirmLSV">
+    <a type="button" class="align-self-baseline mb-3 btn btn-secondary" routerLink="../../">Voltar</a>
+
+    <form class="formLSV" id="formLSV" [formGroup]="formLSV">
+
+      <div class="form-group">
+        <label for="nome" class="form-label">Nome:</label>
+        <input type="text" name="nome" id="nome" class="form-control" formControlName="nome" readonly autocomplete="off">
+      </div>
+      <div class="form-group row">
+        <div class="form-group col">
+          <label for="registro" class="form-label">Registro:</label>
+          <input type="text" name="registro" id="registro" class="form-control" formControlName="matricula" readonly autocomplete="off">
+        </div>
+        <div class="form-group col">
+          <label for="rg" class="form-label">RG:</label>
+          <input type="text" name="rg" id="rg" class="form-control" formControlName="rg" readonly autocomplete="off">
+        </div>
+        <div class="form-group col-md">
+          <label for="cpf" class="form-label">CPF:</label>
+          <input type="text" name="cpf" id="cpf" class="form-control" mask="000.000.000-00" formControlName="cpf"
+            readonly autocomplete="off">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="secretaria" class="form-label">Secretaria:</label>
+        <input type="text" name="secretaria" id="secretaria" class="form-control" formControlName="secretaria"
+          readonly autocomplete="off">
+      </div>
+      <div class="form-group">
+        <label for="localTrabalho" class="form-label">Local de Trabalho:</label>
+        <input type="text" name="localTrabalho" id="localTrabalho" class="form-control" formControlName="localTrabalho"
+          readonly autocomplete="off">
+      </div>
+      <div class="form-group">
+        <label for="cargo" class="form-label">Cargo:</label>
+        <input type="text" name="cargo" id="cargo" class="form-control" formControlName="cargo" readonly autocomplete="off">
+      </div>
+
+      <div class="form-group">
+        <label for="cep" class="form-label">CEP:</label>
+        <input type="text" name="cep" id="cep" class="form-control" mask="00000-000" formControlName="cep" readonly autocomplete="off">
+      </div>
+      <div class="form-group row">
+        <div class="form-group col-sm-9">
+          <label for="endereco" class="form-label">Endereco:</label>
+          <input type="text" name="endereco" id="endereco" class="form-control" formControlName="endereco"
+            oninput="this.value = this.value.toUpperCase()" readonly autocomplete="off">
+        </div>
+        <div class="form-group col">
+          <label for="numeroEndereco" class="form-label">Numero:</label>
+          <input type="number" name="numeroEndereco" id="numeroEndereco" class="form-control"
+            formControlName="numeroEndereco" readonly autocomplete="off">
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="form-group col-md">
+          <label for="bairro" class="form-label">Bairro:</label>
+          <input type="text" name="bairro" id="bairro" class="form-control" formControlName="bairro"
+            oninput="this.value = this.value.toUpperCase()" readonly autocomplete="off">
+        </div>
+        <div class="form-group col-md">
+          <label for="complementoEndereco" class="form-label">Complemento:</label>
+          <input type="text" name="complementoEndereco" id="complementoEndereco" class="form-control"
+            formControlName="complementoEndereco" oninput="this.value = this.value.toUpperCase()" readonly autocomplete="off"
+            [placeholder]="!servidor.complementoEndereco?'Não Informado':'(opcional)'">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="municipio" class="form-label">Municipio:</label>
+        <input type="text" name="municipio" id="municipio" class="form-control" formControlName="municipio"
+          oninput="this.value = this.value.toUpperCase()" readonly autocomplete="off">
+      </div>
+      <!--Desabilitados-->
+
+      <div class="form-group">
+        <label for="tipo" class="form-label">Tipo:</label>
+        <select name="tipo" id="tipo" class="form-select" #tipo>
+          <option value="" selected disabled>--Selecione o tipo de licença ---</option>
+          <option value="sem contribuição">Sem contribuição da previdência</option>
+          <option value="com contribuição">Com contribuição da previdência</option>
+        </select>
+      </div>
+
+      <div class="form-group row">
+        <div class="form-group col">
+          <label >Início: </label >
+          <input type="date" name="inciolsv" id="inciolsv" class="form-control" min="{{minDateIni | date:'yyyy-MM-dd'}}"  #iniLSV (change)="minDateEnd = $any($event.target).value">
+        </div>
+        <div class="form-group col">
+          <label >Fim: </label>
+          <input type="date" name="fimlsv" id="fimlsv" class="form-control" #endLSV [min]="minDateEnd">
+        </div>
+
+      </div>
+
+      <div class="form-group mt-3 d-flex align-items-center">
+        <input type="checkbox" name="confirmacao" id="confirmacao" #confirmacao (click)="openTerms()">
+        <label for="confirmacao" class="form-label mx-3 text-danger">Declaro que estou ciente dos termos da LICENÇA PARA TRATAR DE INTERESSES PARTICULARES: Lei Nº 1780, de 6 de junho de 1978. Artigos 205 a 208.</label>
+      </div>
+
+      <div class="action mt-4 d-flex justify-content-center">
+        <button class="btn-pmsv btn-pmsv-primary" (click)="enviarSolicitacaoLSV(formLSV.value)">Enviar
+          Solicitação</button>
+      </div>
+    </form>
+  </div>
+</section>

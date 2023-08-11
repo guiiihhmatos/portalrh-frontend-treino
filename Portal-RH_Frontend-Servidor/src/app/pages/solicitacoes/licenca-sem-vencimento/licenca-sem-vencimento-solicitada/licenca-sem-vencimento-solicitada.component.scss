@@ -1,0 +1,34 @@
+section#lsv-realizada {
+  min-height: calc(100vh - 80px - 14vh);
+  width: 50%;
+  min-width: 380px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  table{
+    tr:hover{
+      cursor: pointer;
+      background-color: #f0f0f0;
+    }
+  }
+}
+
+
+.card-header-red {
+  background-color: rgb(227, 39, 39);
+  color: white;
+}
+
+.color-text {
+  color: rgb(227, 39, 39);
+}
+
+.botao {
+  color: white;
+  background-color: #346692;
+  border: none;
+  height: 40px;
+  width: 120px;
+  border-radius: 10px;
+}

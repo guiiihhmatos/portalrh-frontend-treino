@@ -1,0 +1,57 @@
+
+<!-- Desenho do pdf -->
+<div class="fundo__folha">
+  <div class="conteudo_impressao d-flex flex-column" #impressao>
+    <div class="top_protocolo">
+      <img src="assets/image/recadastramento/top_protocolo.png" alt="Cabeçalho São Vicente" class="mt-md-3 mt-0">
+    </div>
+    <div class="dados d-flex flex-column">
+      <span class="text-center p-3"
+        style="font-weight: bold; font-family: Arial, Helvetica, sans-serif;">{{protocolo.titulo}}</span>
+      <div class="table__protcolo">
+        <table>
+          <tbody class="tbody">
+            <tr class="tr">
+            </tr>
+            <tr class="tr">
+              <th> Nº Protocolo </th>
+              <div class="space"></div>
+              <td> {{protocolo.numero}} </td>
+            </tr>
+            <tr class="tr">
+              <th> Nome </th>
+              <div class="space"></div>
+              <td> {{protocolo.nomeSolicitante}} </td>
+            </tr>
+            <tr class="tr">
+              <th> Registro </th>
+              <div class="space"></div>
+              <td> {{protocolo.registro}} </td>
+            </tr>
+            <tr class="tr">
+              <th> Data de Envio </th>
+              <div class="space"></div>
+              <td> {{protocolo.dtEnvio | date : 'dd/MM/YYYY HH:mm'}} </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="terms">
+        <p style="font-size: 10pt;" *ngIf="terms"><strong>* Deve aguardar o andamento em exercício</strong></p>
+        <p class="text-center" *ngIf="terms"><strong>Termos Aceitos</strong></p>
+        <div class="terms" *ngIf="terms?.declaracoes">
+          <span class="termsObj" style="font-family: 'Times New Roman', Times, serif; font-size: 9pt;"
+            *ngFor="let term of terms.declaracoes">{{term}}</span>
+        </div>
+        <div class="terms" *ngIf="!terms?.declaracoes">
+          <span class="termsObj" style="font-family: 'Times New Roman', Times, serif; font-size: 9pt;">{{terms}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="container-fluid">
+  <button class="btn btn-secondary mt-3 mb-3" routerLink="/solicitacoes/inicio">Voltar para solicitações</button>
+    <embed src="" type="" #pdf type="application/pdf">
+</section>

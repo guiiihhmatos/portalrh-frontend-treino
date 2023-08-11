@@ -1,0 +1,23 @@
+<section class="container-fluid" id="container">
+  <h2 class="mt-5">Consultar envio de Declaração</h2>
+
+  <div class="card shadow px-5 py-3 consulta mt-3">
+
+    <form class="form__consultar-protocolo d-flex flex-column align-items-center" [formGroup]="formConsulta">
+      <div class="form-group">
+        <label class="form-label" for="tipo"> Tipo de declaração: </label>
+        <select name="tipo" id="tipo" class="form-select" formControlName="exercicio">
+          <option value="" selected disabled>--- Selecione o tipo ---</option>
+          <option value="{{anoAtual-2}}">Declaração de Bens {{anoAtual-2}}</option>
+          <option value="{{anoAtual-1}}">Declaração de Bens {{anoAtual-1}}</option>
+          <option value="{{anoAtual}}">Exoneração</option>
+        </select>
+      </div>
+
+      <div class="mt-3">
+        <button class="btn-pmsv btn-pmsv-primary" (click)="consultarProtocolo(formConsulta.value)" [disabled]="formConsulta.invalid"> Buscar </button>
+      </div>
+    </form>
+
+  </div>
+</section>

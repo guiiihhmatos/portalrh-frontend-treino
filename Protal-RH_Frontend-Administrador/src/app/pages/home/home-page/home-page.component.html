@@ -1,0 +1,283 @@
+<section class="d-flex flex-column justify-content-center align-items-center mt-5 container-fluid no-gutters">
+
+  <div class="container__dashboard d-flex justify-content-center align-items-center">
+
+        <div class="blocks-info row d-flex justify-content-evenly align-items-center ">
+
+          <div class="blocks col-4 col-md-2">
+            <div class="block shadow">
+
+              <div class="d-flex justify-content-around align-items-center w-100 mt-4">
+                <div class="dashboard__icone mt-3">
+                  <span class="material-symbols-outlined icone color-primary">
+                    demography
+                    </span>
+                </div>
+
+                <div class="dashboard__info">
+                  <div class="info__titulo">
+                    <p><strong>Declarações</strong></p>
+                  </div>
+
+                  <div class="info__texto">
+                    <p>{{ allDeclaracoes.quantidade }}</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="dashboard__paragrafo">
+                <p> Declarações do exercício {{ anoExercicioDeclaracao }} </p>
+              </div>
+
+            </div><!--block-->
+
+            <div class="input__exercicio">
+              <select class="form-select" [(ngModel)]="anoExercicioDeclaracao" (change)="getAllDeclaracoesByExercicio(anoExercicioDeclaracao)">
+
+                <option value="" disabled> Selecione o Ano de exercício </option>
+                <option [ngValue]="item" *ngFor="let item of anosExercicioDeclaracao"> {{ item }} </option>
+
+              </select>
+            </div>
+
+          </div><!--blocks-->
+
+          <div class="blocks col-4 col-md-2">
+            <div class="block shadow">
+
+              <div class="d-flex justify-content-around align-items-center w-100 mt-4">
+                <div class="dashboard__icone mt-3">
+                  <span class="material-symbols-outlined icone color-primary">
+                    edit_note
+                    </span>
+                </div>
+
+                <div class="dashboard__info">
+                  <div class="info__titulo">
+                    <p><strong>Recadastramento</strong></p>
+                  </div>
+
+                  <div class="info__texto">
+                    <p>{{ allRecadastramento.quantidade }}</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="dashboard__paragrafo">
+                <p> Declarações do exercício {{ anoExercicioRecadastramento }} </p>
+              </div>
+
+            </div><!--block-->
+
+            <div class="input__exercicio">
+              <select class="form-select" [(ngModel)]="anoExercicioRecadastramento" (change)="getAllRecadastramento(anoExercicioRecadastramento)">
+
+                <option value="" disabled> Selecione o Ano de exercício </option>
+                <option [ngValue]="item" *ngFor="let item of anosExercicioRecadastramento"> {{ item }} </option>
+
+              </select>
+            </div>
+
+          </div><!--blocks-->
+
+          <div class="blocks col-4 col-md-2">
+            <div class="block shadow">
+
+              <div class="d-flex justify-content-around align-items-center w-100 mt-4">
+                <div class="dashboard__icone mt-3">
+                  <span class="material-symbols-outlined icone color-primary">
+                    cake
+                    </span>
+                </div>
+
+                <div class="dashboard__info">
+                  <div class="info__titulo">
+                    <p><strong>Aniversariantes</strong></p>
+                  </div>
+
+                  <div class="info__texto">
+                    <p>{{ getAllAniversariantesByMes.quantidade }}</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="dashboard__paragrafo">
+                <p> Aniversariantes de {{ mesSelecionado }} </p>
+              </div>
+
+            </div><!--block-->
+
+            <div class="input__exercicio">
+              <select class="form-select" [(ngModel)]="cod_mes" (change)="getAllAniversariantesByMesMethod(cod_mes)">
+
+                <option value="" disabled> Selecione o Ano de exercício </option>
+                <option value="1">Janeiro</option>
+                <option value="2">Fevereiro</option>
+                <option value="3">Março</option>
+                <option value="4">Abril</option>
+                <option value="5">Maio</option>
+                <option value="6">Junho</option>
+                <option value="7">Julho</option>
+                <option value="8">Agosto</option>
+                <option value="9">Setembro</option>
+                <option value="10">Outubro</option>
+                <option value="11">Novembro</option>
+                <option value="12">Dezembro</option>
+
+              </select>
+            </div>
+
+          </div><!--blocks-->
+
+
+          <div class="blocks col-4 col-md-2">
+
+            <div class="block shadow">
+
+              <div class="d-flex justify-content-around align-items-center w-100 mt-4">
+                <div class="dashboard__icone mt-3">
+                  <span class="material-symbols-outlined icone color-primary">
+                    person
+                    </span>
+                </div>
+
+                <div class="dashboard__info">
+                  <div class="info__titulo">
+                    <p><strong>Servidores</strong></p>
+                  </div>
+
+                  <div class="info__texto">
+                    <p>{{ allServidores.quantidade }}</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="dashboard__paragrafo">
+                <p> Total de servidores </p>
+              </div>
+
+            </div><!--block-->
+
+            <div class="input__exercicio"></div>
+
+          </div><!--blocks-->
+
+        </div><!--block-info-->
+
+
+        <div class="circle-info d-flex justify-content-around align-items-center">
+
+          <div class="circle d-flex justify-content-around align-items-center shadow mt-5">
+
+            <div class="circle-left d-flex flex-column align-items-center justify-content-around w-50 h-100">
+
+              <div *ngIf="valSpinner">
+                <mat-spinner></mat-spinner>
+              </div>
+
+              <h4 class="title-circle">Indicador de Declarações</h4>
+              <div class="div__circle" *ngIf="!valSpinner">
+                <circle-progress
+                  [percent]="percentDeclaracao"
+                  [toFixed]="2"
+                  [maxPercent]="100"
+                  [showTitle]="true"
+                  [titleColor]="'#333'"
+                  [subtitle]="progressoDecleracao"
+                  [units]="'%'"
+                  [outerStrokeWidth]="8"
+                  [outerStrokeColor]="colorOuterDeclaracao"
+                  [innerStrokeWidth]="4"
+                  [innerStrokeColor]="colorInnerDeclaracao"
+                  [animationDuration]="800"
+                >
+
+              </circle-progress>
+
+              </div>
+
+              <div class="text-center">
+                <p class="paragrafo-circle">{{ allDeclaracoes.quantidade + " Declarações"}}</p>
+                <p class="paragrafo-circle">{{ maxPercent + " Servidores"}}</p>
+                <p class="paragrafo-circle">{{ "Faltam " + qtdeFaltanteDeclaracao + " Declarações " }}</p>
+              </div>
+            </div>
+
+            <div class="circle-rigth d-flex flex-column justify-content-around h-100 align-items-center w-50">
+
+              <div *ngIf="valSpinner">
+                <mat-spinner></mat-spinner>
+              </div>
+
+              <h4 class="title-circle">Indicador de Recadastros</h4>
+
+              <div class="div__circle" *ngIf="!valSpinner">
+                <circle-progress
+                  [percent]="percent"
+                  [toFixed]="2"
+                  [maxPercent]="100"
+                  [showTitle]="true"
+                  [titleColor]="'#333'"
+                  [subtitle]="progressoRecadastramento"
+                  [units]="'%'"
+                  [outerStrokeWidth]="8"
+                  [outerStrokeColor]="colorOuter"
+                  [innerStrokeWidth]="4"
+                  [innerStrokeColor]="colorInner"
+                  [animationDuration]="800"
+                ></circle-progress>
+              </div>
+
+              <div class="text-center">
+                <p class="paragrafo-circle">{{ allRecadastramento.quantidade + " Recadastros"}}</p>
+                <p class="paragrafo-circle">{{ maxPercent + " Servidores"}}</p>
+                <p class="paragrafo-circle">{{ "Faltam " + qtdeFaltanteRecadastro + " Recadastros" }}</p>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="circle-by-mes d-flex justify-content-around align-items-center shadow mt-5">
+            <div class="d-flex flex-column justify-content-around h-100 align-items-center w-100">
+
+              <div *ngIf="valSpinner">
+                <mat-spinner></mat-spinner>
+              </div>
+
+              <h4 class="title-circle mt-3">Indicador de Recadastros por mês</h4>
+
+              <div class="div__circle" *ngIf="!valSpinner">
+                <circle-progress
+                  [percent]="percentRecadastramento"
+                  [toFixed]="2"
+                  [maxPercent]="100"
+                  [showTitle]="true"
+                  [titleColor]="'#333'"
+                  [subtitle]="progressoRecadastramento"
+                  [units]="'%'"
+                  [outerStrokeWidth]="8"
+                  [outerStrokeColor]="colorOuterRecadastramento"
+                  [innerStrokeWidth]="4"
+                  [innerStrokeColor]="colorInnerRecadastramento"
+                  [animationDuration]="800"
+                ></circle-progress>
+              </div>
+
+              <div class="text-center">
+                <p class="paragrafo-circle">{{ allRecadastramentoByMes.quantidade + " Recadastros"}}</p>
+                <p class="paragrafo-circle">{{ getAllAniversariantesByMes.quantidade + " Aniversariantes"}}</p>
+
+                <button (click)="redirectPendentes()" class="btn btn-danger">{{ "Faltam " + qtdeFaltanteRecadastroByMes + " Recadastros" }}</button>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+
+
+  </div>
+
+</section>

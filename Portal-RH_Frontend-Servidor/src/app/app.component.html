@@ -1,0 +1,19 @@
+<div>
+  <div [class]="logado?'d-flex': ''">
+
+    <div class="lateral" *ngIf="logado">
+      <app-menu-lateral></app-menu-lateral>
+    </div>
+
+    <div [class]="logado?'central':''">
+      <header class="header-servidor" *ngIf="logado">
+        <app-header></app-header>
+      </header>
+      <main class="conteudo-servidor">
+        <router-outlet></router-outlet>
+      </main>
+      <app-footer></app-footer>
+    </div>
+
+  </div>
+</div>

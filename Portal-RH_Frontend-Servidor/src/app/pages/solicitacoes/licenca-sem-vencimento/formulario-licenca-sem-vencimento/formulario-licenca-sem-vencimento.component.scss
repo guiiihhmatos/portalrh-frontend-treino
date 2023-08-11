@@ -1,0 +1,49 @@
+section.formulario-lsv {
+  min-height: calc(100vh - 80px - 14vh);
+
+  .escolher_licenca{
+    width: 50%;
+    min-width: 330px;
+    align-self: center;
+    height: 30vh;
+    min-height: 230px;
+    height: max-content;
+
+  //   .sem_contribuicao,
+  //   .com_contribuicao{
+  //     color: #265a88;
+  //     width: 40%;
+  //     height: 100%;
+  //     min-height: 100px;
+  //     border-radius: 10px;
+  //   }
+
+  //   .sem_contribuicao:hover,
+  //   .com_contribuicao:hover{
+  //     cursor: pointer;
+  //     background-color: #d7d7d7;
+  //     color: #fff;
+  //     transform: scale(1.04);
+  //     transition: 0.3s;
+  //   }
+  }
+
+  div.div_formulario {
+    width: 50%;
+    min-width: 500px;
+    align-self: center;
+
+    @media only screen and (max-width: 550px) {
+      min-width: 280px;
+      width: 90%;
+    }
+
+    @media only screen and (max-width: 450px) {
+      width: 100%;
+    }
+
+    textarea#justificativa{
+      min-height: 100px;
+    }
+  }
+}

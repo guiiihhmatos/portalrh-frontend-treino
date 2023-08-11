@@ -1,0 +1,121 @@
+<section class="formulario-rch container-fluid p-3 m-0 d-flex flex-column">
+  <h2 class="text-center mt-5"> Solicitação de Redução de Carga Horária </h2>
+
+  <div class="div_formulario p-2">
+    <a type="button" class="align-self-baseline mb-3 btn btn-secondary" routerLink="../../">Voltar</a>
+
+    <form class="formRCH" id="formRCH" [formGroup]="formRCH">
+
+      <div class="form-group">
+        <label for="nome" class="form-label">Nome:</label>
+        <input type="text" name="nome" id="nome" class="form-control" formControlName="nome" readonly autocomplete="off">
+      </div>
+      <div class="form-group row">
+        <div class="form-group col">
+          <label for="registro" class="form-label">Registro:</label>
+          <input type="text" name="registro" id="registro" class="form-control" formControlName="matricula" readonly autocomplete="off">
+        </div>
+        <div class="form-group col">
+          <label for="rg" class="form-label">RG:</label>
+          <input type="text" name="rg" id="rg" class="form-control" formControlName="rg" readonly autocomplete="off">
+        </div>
+        <div class="form-group col-md">
+          <label for="cpf" class="form-label">CPF:</label>
+          <input type="text" name="cpf" id="cpf" class="form-control" mask="000.000.000-00" formControlName="cpf"
+            readonly autocomplete="off">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="secretaria" class="form-label">Secretaria:</label>
+        <input type="text" name="secretaria" id="secretaria" class="form-control" formControlName="secretaria"
+          readonly autocomplete="off">
+      </div>
+      <div class="form-group">
+        <label for="localTrabalho" class="form-label">Local de Trabalho:</label>
+        <input type="text" name="localTrabalho" id="localTrabalho" class="form-control" formControlName="localTrabalho"
+          readonly autocomplete="off">
+      </div>
+      <div class="form-group">
+        <label for="cargo" class="form-label">Cargo:</label>
+        <input type="text" name="cargo" id="cargo" class="form-control" formControlName="cargo" readonly autocomplete="off">
+      </div>
+
+      <div class="form-group">
+        <label for="cep" class="form-label">CEP:</label>
+        <input type="text" name="cep" id="cep" class="form-control" mask="00000-000" formControlName="cep" readonly autocomplete="off">
+      </div>
+      <div class="form-group row">
+        <div class="form-group col-sm-9">
+          <label for="endereco" class="form-label">Endereco:</label>
+          <input type="text" name="endereco" id="endereco" class="form-control" formControlName="endereco"
+            oninput="this.value = this.value.toUpperCase()" readonly autocomplete="off">
+        </div>
+        <div class="form-group col">
+          <label for="numeroEndereco" class="form-label">Numero:</label>
+          <input type="number" name="numeroEndereco" id="numeroEndereco" class="form-control"
+            formControlName="numeroEndereco" readonly autocomplete="off">
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="form-group col-md">
+          <label for="bairro" class="form-label">Bairro:</label>
+          <input type="text" name="bairro" id="bairro" class="form-control" formControlName="bairro"
+            oninput="this.value = this.value.toUpperCase()" readonly autocomplete="off">
+        </div>
+        <div class="form-group col-md">
+          <label for="complementoEndereco" class="form-label">Complemento:</label>
+          <input type="text" name="complementoEndereco" id="complementoEndereco" class="form-control"
+            formControlName="complementoEndereco" oninput="this.value = this.value.toUpperCase()" readonly autocomplete="off"
+            [placeholder]="!servidor.complementoEndereco?'Não Informado':'(opcional)'">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="municipio" class="form-label">Municipio:</label>
+        <input type="text" name="municipio" id="municipio" class="form-control" formControlName="municipio"
+          oninput="this.value = this.value.toUpperCase()" readonly autocomplete="off">
+      </div>
+      <!--Desabilitados-->
+
+      <div class="form-group">
+        <label for="tipo" class="form-label">Tipo:</label>
+        <div class="d-flex">
+          <select type="text" name="tipo" id="tipo" class="form-select" formControlName="tipo" #tipo>
+            <option value="" selected disabled>---Selecione o tipo de Redução---</option>
+            <option value="40 horas para 30 horas">40 horas para 30 horas</option>
+            <option value="Lei 4177-A">Lei 4177-A</option>
+          </select>
+          <button class="btn bg-pmsv-primary text-white d-flex btn_help" (click)="showHelp()" *ngIf="tipo.value==='Lei 4177-A'">
+            <span class="material-symbols-outlined">question_mark</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="form-floating mt-3" *ngIf="tipo.value==='40 horas para 30 horas'">
+        <textarea type="text" name="justificativa" id="justificativa" class="form-control" formControlName="conteudo"></textarea>
+        <label for="justificativa" class="form-label">Justifique sua solicitação de redução:</label>
+      </div>
+
+      <div class="mt-3" *ngIf="tipo.value==='Lei 4177-A'">
+        <div class="form-group">
+          <label for="parentesco" class="form-label">Comprovante parentesco:</label>
+          <input type="file" name="parentesco" id="parentesco" class="form-control" accept="image/png, image/jpeg, .pdf" (input)="addFile($event)">
+        </div>
+        <div class="form-group">
+          <label for="laudo" class="form-label">Laudo médico:</label>
+          <input type="file" name="laudo" id="laudo" class="form-control" accept="image/png, image/jpeg, .pdf" (input)="addFile($event)">
+        </div>
+      </div>
+
+      <div class="form-group mt-3 d-flex justify-content-center align-items-center" *ngIf="tipo.value==='Lei 4177-A'">
+        <input type="checkbox" name="confirmacao" id="confirmacao" #confirmacao>
+        <label for="confirmacao" class="form-label mx-3 text-danger"> Declaro, sob as penas da Lei, que são verdadeiras completas as informações prestadas neste documento.</label>
+      </div>
+
+      <div class="action mt-4 d-flex justify-content-center">
+        <button class="btn-pmsv btn-pmsv-primary" (click)="enviarSolicitacaoRCH(formRCH.value)">Enviar
+          Solicitação</button>
+      </div>
+
+    </form>
+  </div>
+</section>

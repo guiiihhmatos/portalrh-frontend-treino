@@ -1,0 +1,109 @@
+section#paginas {
+  min-height: calc(100vh - 80px - 1240px);
+
+
+  // ====== CARDS DASHBOARD ====== //
+  div.cards_dashboard {
+
+    // background: linear-gradient(to bottom, #346692 0%, #346692 60%, #fff 60%, #fff 100%);
+    div.card {
+      min-width: 250px;
+      min-height: 150px;
+    }
+  }
+
+  // ======== ITENS DO ACCORDION ======== //
+  .accordion-item {
+    button.accordion-button {
+      &:focus {
+        border-color: #fff;
+        border-bottom: 1px solid #f0f0f0;
+        box-shadow: none;
+      }
+    }
+
+    button.accordion-button[aria-expanded="true"] {
+      background-color: #ffffff;
+      color: #346692;
+      font-weight: bold;
+
+      &::after {
+        color: #fff;
+      }
+    }
+
+    div.accordion-body {
+      min-height: 100px;
+      overflow-y: auto;
+      max-height: 60vh;
+
+      div.sem_andamentos,
+      div.sem_avisos {
+        span.material-symbols-outlined {
+          font-size: 200px;
+          color: #f0f0f0;
+        }
+        div {
+          p {
+            color: #cecece;
+          }
+        }
+      }
+
+      // ======== AVISOS ========//
+      div.accordion-body_avisos {
+        min-width: min-content;
+        flex-wrap: wrap;
+
+        div.aviso_icon{
+          border-radius: 30px;
+          cursor: pointer;
+          min-width: 250px;
+          width: max-content;
+          gap: 20px;
+          background-color: #fff;
+          &:hover{
+            transform: scale(1.05);
+            transition: .5s;
+            z-index: 10;
+          }
+        }
+        @media only screen and (max-width: 500px){
+
+        }
+      }
+
+      // ======== ANDAMENTOS ========//
+      div.accordion-body_andamentos {
+        div.filtro_andamentos {
+          width: 60%;
+        }
+
+        div.tabela_andamentos {
+          width: 60%;
+          table{
+            tr:hover{
+              background-color: #f0f0f0;
+              cursor: pointer;
+            }
+          }
+        }
+
+        @media only screen and (max-width: 700px){
+          div.filtro_andamentos,
+          div.tabela_andamentos {
+            width: 80%;
+          }
+        }
+        @media only screen and (max-width: 500px){
+          div.filtro_andamentos,
+          div.tabela_andamentos {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+
+
+}

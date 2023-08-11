@@ -1,0 +1,254 @@
+/* ========== CONTAINER PRINCIPAL ========== */
+
+.novo__container
+{
+  min-height: 600px;
+  width: 1000px;
+  background-color: white;
+  border-radius: 10px;
+  margin-bottom: 2vh;
+
+  input
+  {
+    pointer-events: none;
+    background-color: #EEEEEE;
+  }
+
+  .div__arrows
+  {
+    .button__arrow
+    {
+      border: none;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0;
+
+      .botao
+      {
+        width: 100%;
+        height: 100%;
+        color: #265a88;
+      }
+    }
+
+  }
+
+  .div__botoes__validacao
+  {
+    margin-top: 50px;
+    height: 200px;
+  }
+
+}
+
+
+
+
+/* ========== LEGENDA ========== */
+
+.div__legenda
+{
+  width: 1000px;
+  height: 50px;
+  margin-bottom: 2vh;
+
+  .legenda
+  {
+    background-color: white;
+    height: 50px;
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 20px;
+
+    #head
+    {
+      background-color: transparent;
+    }
+
+    .w-40
+    {
+      width: 40%;
+    }
+
+    .w-15
+    {
+      width: 15%;
+    }
+  }
+
+}
+
+
+
+
+
+/* ========== ARQUIVOS ========== */
+
+.div__arquivos
+{
+  width: 100%;
+
+  .div__arquivos-1
+  {
+    width: 55%;
+    text-align: start;
+  }
+
+  .div__arquivos-2
+  {
+    width: 16%;
+
+    .button__visualizar
+    {
+      background-color: #265a88;
+      border: none;
+      border-radius: 10px;
+      height: 36px;
+      color: white;
+      width: 120px;
+    }
+
+  }
+
+  .div__arquivos-3
+  {
+    width: 16%;
+  }
+}
+
+
+
+
+/* ========== TABELA DEPENDENTES ========== */
+
+.div__tabela
+{
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+  height: 300px;
+  margin-top: 30px;
+
+  .tabela
+  {
+    width: 100%;
+
+    .tabela__thead
+    {
+      background-color: #346692;
+      color: white;
+      height: 50px;
+      border: 1px solid black;
+
+      th,td
+      {
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+    }
+
+    .tabela__tbody
+    {
+      td
+      {
+        height: 40px;
+      }
+
+      tr
+      {
+        border: 1px solid black;
+      }
+
+    }
+
+  }
+
+}
+
+
+/* ========== MODAL ========== */
+
+#alteracoes
+{
+  background-color: #265a88;
+  border: #265a88;
+  pointer-events: none;
+}
+
+
+
+
+
+
+/* ========== CLASSES USADAS EM MAIS DE UM LOCAL ========== */
+
+.button__validar
+{
+  background-color: rgb(43, 191, 43);
+  border: none;
+  border-radius: 10px;
+  height: 45px;
+  color: white;
+  width: 160px;
+}
+
+.button__cancelar
+{
+  background-color: #e6e6e6;
+  border: none;
+  border-radius: 10px;
+  height: 45px;
+  width: 160px;
+}
+
+.button__invalidar
+{
+  background-color: rgb(227, 39, 39);
+  border: none;
+  border-radius: 10px;
+  height: 45px;
+  width: 160px;
+  color: white;
+}
+
+.button__baixar
+{
+  background-color: #265a88;
+  border: none;
+  border-radius: 10px;
+  height: 36px;
+  color: white;
+  width: 120px;
+}
+
+.button__baixar:hover, .button__visualizar:hover
+{
+  background-color: #4f7da6;
+  transition: 0.5s;
+}
+
+.backInput
+{
+   background-color: #ffff8f;
+}
+
+/* ========== BUTTON VOLTAR ========== */
+.button__voltar
+{
+  background-color: #265a88;
+  border: none;
+  border-radius: 10px;
+  height: 45px;
+  color: white;
+  width: 160px;
+
+  &:hover
+  {
+    background-color: #3f79ac;
+  }
+}
+

@@ -1,0 +1,124 @@
+
+<div class="header_example ">
+
+  <nav class="navbar bg-pmsv-primary text-white">
+    <div class="container-items-nav row w-100 px-1 mx-0 d-flex align-items-center">
+      <div class="btn-menu col-4">
+        <button class="navbar-toggler bg-white" type="button" data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" *ngIf="loginInicial == 'false'">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+
+      <h3 class="col-4 text-center text-white">RH ADMIN</h3>
+
+      <li class="dropdown list-unstyled acoes-usuario col-4 text-end" >
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+          aria-expanded="false">
+
+          {{ user | uppercase}}
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+            class="bi bi-person-fill mb-1" viewBox="0 0 16 16">
+            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+          </svg>
+
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end text-end">
+
+          <li>
+            <a class="dropdown-item lista-a py-2" href="#" style="font-size: .9em;" routerLink="trocar-senha">
+              Alterar Senha
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                class="bi bi-key" viewBox="0 0 16 16">
+                <path
+                  d="M0 8a4 4 0 0 1 7.465-2H14a.5.5 0 0 1 .354.146l1.5 1.5a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0L13 9.207l-.646.647a.5.5 0 0 1-.708 0L11 9.207l-.646.647a.5.5 0 0 1-.708 0L9 9.207l-.646.647A.5.5 0 0 1 8 10h-.535A4 4 0 0 1 0 8zm4-3a3 3 0 1 0 2.712 4.285A.5.5 0 0 1 7.163 9h.63l.853-.854a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.793-.793-1-1h-6.63a.5.5 0 0 1-.451-.285A3 3 0 0 0 4 5z" />
+                <path d="M4 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+              </svg>
+            </a>
+
+          </li>
+          <li>
+            <a class="dropdown-item lista-a py-2" href="#" style="font-size: .9em;" (click)="logout()">
+              Logout
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                  d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z" />
+                <path fill-rule="evenodd"
+                  d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z" />
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
+        aria-labelledby="offcanvasNavbarLabel" style="background-color: #265a88;">
+        <div class="offcanvas-header">
+          <p class="offcanvas-title" id="offcanvasNavbarLabel" style="color: white;">RH ADMIN</p>
+          <button type="button" class="btn-close" style="background-color:white;" data-bs-dismiss="offcanvas"
+            aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body mt-5">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item" data-bs-dismiss="offcanvas" *ngIf="nivel == 'NIVEL_2' || nivel == 'NIVEL_3' ">
+              <a class="nav-link" style="color:white;" href="#" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false" routerLink="home" routerLinkActive="active">Home</a>
+            </li>
+            <li class="nav-item dropdown" data-bs-dismiss="offcanvas" *ngIf="nivel == 'NIVEL_2' || nivel == 'NIVEL_3' ">
+              <a class="nav-link" style="color:white;" href="#" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false" routerLink="recadastramento/relatorio" routerLinkActive="active">
+                Recadastramento Anual
+              </a>
+            </li>
+
+            <li class="nav-item dropdown" data-bs-dismiss="offcanvas" *ngIf="nivel == 'NIVEL_2' || nivel == 'NIVEL_3' ">
+              <a class="nav-link" style="color:white;" href="#" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false" routerLink="declaracao/relatorio" routerLinkActive="active">
+                Declaração de bens
+              </a>
+            </li>
+
+            <li class="nav-item dropdown" *ngIf="nivel == 'NIVEL_2' || nivel == 'NIVEL_3' ">
+              <a class="nav-link dropdown-toggle" style="color:white;" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false" routerLinkActive="active">
+                Solicitações
+              </a>
+              <ul class="dropdown-menu">
+                <li data-bs-dismiss="offcanvas">
+                  <a class="dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" routerLink="solicitacoes/dirh">DIRH</a>
+                </li>
+                <li data-bs-dismiss="offcanvas">
+                  <a class="dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" routerLink="solicitacoes/digp">DIGP</a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown" *ngIf="nivel == 'NIVEL_1' || nivel == 'NIVEL_3' ">
+              <a class="nav-link dropdown-toggle" style="color:white;" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false" routerLinkActive="active">
+                Controle de Afastamento
+              </a>
+              <ul class="dropdown-menu">
+                <li data-bs-dismiss="offcanvas">
+                  <a class="dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" routerLink="afastamentos/relatorio">Afastados</a>
+                </li>
+                <li data-bs-dismiss="offcanvas">
+                  <a class="dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" routerLink="ferias/relatorio">Férias</a>
+                </li>
+              </ul>
+            </li>
+
+          </ul>
+        </div>
+
+        <div class="row">
+          <div class="col-12 text-center color-white">
+            <p> RH </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+</div>

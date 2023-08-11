@@ -1,0 +1,31 @@
+<div class="possui-cadastro">
+  <div class="card">
+    <div class="card-header" id="top-header">
+      Recadastramento Anual
+    </div>
+    <div class="card-body">
+      <h5 class="card-title titulo">Você já possui cadastro em 2023</h5>
+
+      <div class="textos my-5">
+
+        <p class="card-text"><strong> N° do protocolo : </strong> {{protocolo}} </p>
+        <p class="card-text"><strong> Nome : </strong> {{nome}} </p>
+        <p class="card-text"><strong> Registro : </strong> {{matricula}} </p>
+        <p class="card-text"><strong>Data de envio : </strong> {{dataEnvio | date: 'dd/MM/YYYY - HH:mm'}} </p>
+
+        <div *ngIf="statusValidacao == 'Inválido' " class="mt-5">
+          <p class="card-text color-text"><strong>Seu Recadastramento não foi aceito.</strong></p>
+          <p class="card-text color-text"><strong>Motivo : {{motivoInvalidacao}} </strong></p>
+        </div>
+
+      </div>
+
+      <div class="row justify-content-center gap-3">
+        <button class="botao bg-success mt-3" (click)="redirectToPDF(protocolo, nome, matricula, dataEnvio)">Imprimir</button>
+        <button class="botao mt-3" (click)="redirectToForm()" *ngIf="statusValidacao == 'Inválido'">Refazer</button>
+        <button class="botao bg-pmsv-primary mt-3 col-md" routerLink="/home">Voltar</button>
+      </div>
+
+    </div>
+  </div>
+</div>

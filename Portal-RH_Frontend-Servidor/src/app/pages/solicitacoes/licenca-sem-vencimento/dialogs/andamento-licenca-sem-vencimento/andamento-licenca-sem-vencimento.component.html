@@ -1,0 +1,20 @@
+<h1 mat-dialog-title class="text-center">Andamento: Redução de Carga Horaria</h1>
+<hr class="m-0">
+<div mat-dialog-content *ngIf="solicitacao.andamento.length > 0 && !solicitacao.concluido">
+  <p><strong>Tipo de Requisição: </strong> {{solicitacao.contribuicao? 'com contribuição da previdência' : 'sem contribuição da previdência'}} </p>
+  <p><strong>Data do andamento: </strong> {{andamento?.dataOcorrencia | date: 'dd/MM/YYYY'}} </p>
+  <p><strong>Andamento atual: </strong> {{andamento?.observacao}} </p>
+  <p><strong>Protocolo Solicitação: </strong>{{solicitacao.id.toString().padStart(4,"0")}}</p>
+</div>
+<div mat-dialog-content *ngIf="solicitacao.andamento.length === 0 && !solicitacao.concluido">
+  <p><strong>Tipo de Requisição: </strong> {{solicitacao.contribuicao? 'com contribuição da previdência' : 'sem contribuição da previdência'}} </p>
+  <p><strong>Protocolo Solicitação: </strong>{{solicitacao.id.toString().padStart(4,"0")}}</p>
+  <p class="text-center text-danger">Solicitação aguardando atendimento...</p>
+</div>
+<div mat-dialog-content *ngIf="solicitacao.concluido">
+  <p><strong>Protocolo Solicitação: </strong>{{solicitacao.id.toString().padStart(4,"0")}}</p>
+  <p class="text-center text-success">Solicitação Atendida!.</p>
+</div>
+<div mat-dialog-actions class="d-flex justify-content-around">
+  <button mat-button color="secondary" mat-dialog-close cdkFocusInitial>OK</button>
+</div>

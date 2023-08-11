@@ -1,0 +1,37 @@
+section.formulario-quinquenio {
+  min-height: calc(100vh - 80px - 14vh);
+
+  div.div_formulario {
+    width: 50%;
+    min-width: 500px;
+    align-self: center;
+
+    form.formQuinquenio{
+      fieldset.periodo{
+        border: 1px solid #000;
+        padding: 10px;
+      }
+    }
+  }
+
+  .form-group
+  {
+    margin-top: 7px;
+    margin-bottom: 7px;
+  }
+
+  @media only screen and (max-width: 520px) {
+    padding: 0 !important;
+
+    div.div_formulario {
+      width: 95%;
+      min-width: 280px;
+    }
+  }
+  @media only screen and (max-width: 380px) {
+    div.div_formulario {
+      width: 100%;
+    }
+  }
+
+}

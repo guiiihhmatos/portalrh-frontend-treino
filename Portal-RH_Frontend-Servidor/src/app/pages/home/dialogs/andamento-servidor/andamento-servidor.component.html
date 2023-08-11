@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Andamento: {{andamento.tipoSolicitacao}}</h1>
+<hr class="m-0">
+<div mat-dialog-content>
+  <p><strong>Nº protocolo solicitação : </strong> {{andamento.idSolicitacao.toString().padStart(4, "0")}} </p>
+  <p><strong>Data do andamento: </strong> {{andamento.dataOcorrencia | date: 'dd/MM/YYYY - HH:mm'}} </p>
+  <p><strong>Observação: </strong> {{andamento.observacao}} </p>
+</div>
+<hr class="m-0">
+<div mat-dialog-actions class="d-flex justify-content-center">
+  <button mat-button mat-dialog-close cdkFocusInitial color="secondary">OK</button>
+</div>

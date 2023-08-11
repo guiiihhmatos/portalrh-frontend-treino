@@ -1,0 +1,67 @@
+<div class="content">
+  <div class="folha mt-3">
+    <div class="fundo__folha-desktop">
+      <div class="conteudo__impressao_desktop" #impressao>
+        <div class="dados_desktop d-flex flex-column ">
+
+          <div class="row d-flex align-items-center justify-content-center w-90 header">
+
+            <div class="col-md-2">
+              <img src="/assets/images/brasao.pmsaovicente.jpg" alt="teste" class="image-logo">
+            </div>
+
+            <div class="col-md-10 text-center header__title-div">
+              <p class="header__title">Prefeitura Municipal de São Vicente</p>
+              <p class="header__subtitle">Cidade Monumento da História Pátria</p>
+              <p class="header__subtitle">Cellula Mater da Nacionalidade</p>
+            </div>
+
+          </div>
+
+          <div class="pdf__paragrafo col-md-9" style="margin-top: 100px;">
+
+            <p>Excelentíssimo Senhor Prefeito Municipal de São Vicente</p>
+
+            <p>
+                Eu, {{nomeUpper}}, portador do RG {{servidor.rg}} e CPF {{servidor.cpf}},
+                residente no endereço {{servidor.endereco}}, {{servidor.numeroEndereco}}, no exercício do cargo de
+                {{servidor.cargo.toLowerCase()}}, sob o registro {{servidor.matricula}}, lotado na {{servidor.secretaria}}, local de trabalho {{ servidor.localTrabalho}} .
+            </p>
+
+            <p> Vem mui respeitosamente, à presença de Vossa Excelência requerer {{ servidor.tipo}}</p>
+
+          </div>
+
+        </div>
+
+        <div class="footer__gestao w-100 d-flex justify-content-center">
+
+          <div class="col-md-5 d-flex flex-column justify-content-center align-items-center">
+
+            <div class="footer__paragrafo">
+              <p>Termos em que, <br> P. Deferimento</p>
+            </div>
+
+            <div class="footer__paragrafo mt-2">
+              <p>São Vicente, {{ dia }} de {{ mesString }} de {{ ano }}</p>
+            </div>
+
+            <div class="my-2 footer__paragrafo">
+              <p> Solicitado por via eletrônica </p>
+            </div>
+
+            <div class="footer__paragrafo">
+              <p> Telefone: {{servidor.telefone}} </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <button class="botao mt-3 mb-5" (click)="generatePDF()">Baixar</button>
+
+</div>

@@ -1,0 +1,60 @@
+<section class="container-fluid d-flex flex-column p-3">
+  <h2 class="text-center mt-5">Requisição de Declaração</h2>
+  <div class="card declaracao shadow p-3 mt-3">
+    <a type="button" class="align-self-baseline mb-3 btn btn-secondary" routerLink="../../">Voltar</a>
+    <form class="formDeclaracao needs-validation" [formGroup]="formRequisicaoDeclaracao">
+      <div class="form-group">
+        <label for="nome" class="form-label">Nome: </label>
+        <input type="text" name="nome" id="nome" class="form-control" formControlName="nome" readonly autocomplete="off">
+      </div>
+      <div class="form-group row mt-1">
+        <div class=" col">
+          <label for="registro" class="form-label">Registro: </label>
+          <input type="number" name="registro" id="registro" class="form-control" formControlName="matricula" readonly autocomplete="off">
+        </div>
+        <div class=" col">
+          <label for="rg" class="form-label">RG: </label>
+          <input type="text" name="rg" id="rg" class="form-control" formControlName="rg" readonly autocomplete="off">
+        </div>
+        <div class=" col-lg-5">
+          <label for="cpf" class="form-label">CPF: </label>
+          <input type="text" name="cpf" id="cpf" class="form-control" formControlName="cpf" mask="000.000.000-00"
+            readonly autocomplete="off">
+        </div>
+      </div>
+      <!-- Desablitados -->
+      <div class="form-group">
+        <label for="email" class="form-label">Email:</label>
+        <input type="email" name="email" id="email" class="form-control" formControlName="email"
+          placeholder="exemplo@email.com">
+      </div>
+      <div class="form-group row mt-1">
+        <div class=" col-md">
+          <label for="telefone" class="form-label">Telefone: </label>
+          <input type="text" name="telefone" id="telefone" class="form-control"
+            onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="16"
+            mask="(00) 0 0000-0000||(00) 0000-0000" formControlName="telefone" required #telefone>
+        </div>
+        <div class=" col-lg">
+          <label for="declaracao" class="form-label">Tipo de declaração: </label>
+          <select name="declaracao" id="declaracao" class="form-select" formControlName="tipo">
+            <option value="" selected disabled>--- Selecione a declaração ---</option>
+            <option [value]="declaracao" *ngFor="let declaracao of declaracoes">{{declaracao}}</option>
+            <option value="" #outros> Outros </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-floating mt-3" *ngIf="outros.selected">
+        <textarea name="tipoTextArea" id="tipoTextArea" class="form-control" formControlName="tipo"></textarea>
+        <label for="tipoTextArea">Especifique o outro tipo: </label>
+      </div>
+
+      <div class="form-group sumbit d-flex justify-content-center mt-3">
+        <button class="btn-pmsv btn-pmsv-primary" (click)="enviarSolicitacao(formRequisicaoDeclaracao.value)">Solicitar
+          Declaração</button>
+      </div>
+
+    </form>
+  </div>
+</section>

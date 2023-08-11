@@ -1,0 +1,82 @@
+<section class="container-fluid">
+
+  <h2 class="text-center mt-5 mb-3">RETIFICAÇÃO DE BENS {{exercicio}}</h2>
+  <form  class="form__retificacao" ngForm [formGroup]="formRetificacao">
+    <a type="button" class="align-self-baseline mb-3 btn btn-secondary" routerLink="../../">Voltar</a>
+    <div class="form-group mt-3">
+      <label for="protocolo" class="form-label">Protocolo:</label>
+      <input type="number" name="protocolo" id="protocolo" class="form-control" readonly formControlName="id" autocomplete="off">
+    </div>
+    <div class="form-group">
+      <label for="matricula" class="form-label">Matrícula:</label>
+      <input type="number" name="matricula" id="matricula" class="form-control" readonly formControlName="matricula" autocomplete="off">
+    </div>
+    <div class="form-group">
+      <label for="retificacao" class="form-label">Motivo Retificação:</label>
+      <input type="text" name="retificacao" id="retificacao" class="form-control" formControlName="motivoRetificacao" autocomplete="off">
+    </div>
+    <div class="form-group">
+      <label for="matricula" class="form-label">Nome Completo:</label>
+      <input type="text" name="matricula" id="matricula" class="form-control" readonly formControlName="nome" autocomplete="off">
+    </div>
+    <div class="form-group">
+      <label for="secretaria" class="form-label">Secretaria:</label>
+      <input type="text" name="secretaria" id="secretaria" class="form-control" readonly  formControlName="secretaria" autocomplete="off">
+    </div>
+    <div class="form-group">
+      <label for="localTrabalho" class="form-label">Local de Trabalho:</label>
+      <input type="text" name="localTrabalho" id="localTrabalho" class="form-control" readonly  formControlName="localTrabalho" autocomplete="off">
+    </div>
+    <!--Desabilitados-->
+
+    <div class="form-group">
+      <label for="email" class="form-label">Email:</label>
+      <input type="text" name="email" id="email" class="form-control" formControlName="email" placeholder="exemplo@email.com">
+    </div>
+    <div class="form-group">
+      <label for="tipo" class="form-label">Tipo:</label>
+      <select name="tipo" id="tipo" class="form-select" formControlName="tipo">
+        <option value="" selected disabled>-- Selecione o Tipo --</option>
+        <option value="Declaração Anual de Bens">Declaração Anual de Bens</option>
+        <option value="Declaração Negativa de Bens">Declaração Anual Negativa de Bens</option>
+      </select>
+    </div>
+    <!--Habilitados-->
+
+    <div class="form-group">
+      <label for="exercicio" class="form-label">Exercicio:</label>
+      <input type="number" name="exercicio" id="exercicio" class="form-control" readonly formControlName="exercicio" autocomplete="off">
+    </div>
+    <!--Desabilitado-->
+
+    <div class="form-group">
+      <label for="impostoRenda" class="form-label">Nº Recibo Imposto de Renda:</label>
+      <input type="number" name="impostoRenda" id="impostoRenda" class="form-control" placeholder="(opcional)" formControlName="reciboIr">
+    </div>
+
+    <div class="form-group">
+      <label for="declaracao" class="form-label">Declaração:</label>
+      <textarea name="declaracao" id="declaracao" class="form-control" [readonly]="dsDeclaracao" formControlName="declaracao" autocomplete="off"></textarea>
+    </div>
+
+    <div class="form-group d-flex mt-4 gap-3">
+      <input type="checkbox" name="confirmacao" id="confirmacao">
+      <label for="confirmacao" class="form-label text-danger">
+        Declaro, sob as penas da Lei, que são verdadeiras completas as informações prestadas neste documento.
+      </label>
+    </div>
+    <div class="decreto">
+      <p class="text-danger">
+        DECRETO Nº 4185-A, Art. 2º, Parágrafo único – A Declaração de que trata este artigo compreenderá imóveis,
+        móveis, semoventes, dinheiro, títulos, ações e qualquer outra espécie de bens e valores patrimoniais
+        localizados no País ou no exterior.
+      </p>
+    </div>
+
+    <div class="enviar d-flex justify-content-center w-100 mt-3 mb-3">
+      <button type="submit" class="btn-pmsv btn-pmsv-primary" (click)="enviarRetificacao(formRetificacao.value)">Enviar</button>
+    </div>
+
+  </form>
+</section>
+

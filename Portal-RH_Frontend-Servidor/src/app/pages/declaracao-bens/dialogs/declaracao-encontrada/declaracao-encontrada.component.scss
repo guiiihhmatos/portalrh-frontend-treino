@@ -1,0 +1,9 @@
+div[mat-dialog-content]{
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+div[mat-dialog-actions]{
+  min-width: 340px;
+}

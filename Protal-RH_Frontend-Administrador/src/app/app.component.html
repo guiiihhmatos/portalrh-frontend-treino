@@ -1,0 +1,8 @@
+<div *ngIf="usuarioLogado">
+  <app-header></app-header>
+  <router-outlet></router-outlet>
+</div>
+
+<div *ngIf="!usuarioLogado" class="login">
+  <router-outlet></router-outlet>
+</div>

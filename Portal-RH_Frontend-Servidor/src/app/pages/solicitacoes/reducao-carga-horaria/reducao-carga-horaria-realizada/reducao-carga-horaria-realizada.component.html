@@ -1,0 +1,43 @@
+<section id="rch-realizada" class="container-fluid d-flex flex-column p-3 rch-realizada align-items-center">
+  <div class="card shadow content_rch-realizaada mt-5">
+    <div class="card-header">
+      <h4 class="text-center">Você ja possui solicitações realizadas</h4>
+      <h5 class="text-center">Redução de Carga Horária</h5>
+    </div>
+    <div class="card-body">
+      <div class="div_table border">
+        <p class="text-center fw-bold">*Clique na linha para visualizar o andamento*</p>
+        <table mat-table [dataSource]="solicitacoes" matSort>
+          <ng-container matColumnDef="protocolo">
+            <th mat-header-cell *matHeaderCellDef class="bg-pmsv-primary text-white fw-bold d-none d-md-table-cell">Nº Protocolo</th>
+            <td mat-cell *matCellDef="let solicitacao" class="d-none d-md-table-cell">{{solicitacao.id.toString().padStart(4,"0")}}</td>
+          </ng-container>
+          <ng-container matColumnDef="data">
+            <th mat-header-cell *matHeaderCellDef class="bg-pmsv-primary text-white fw-bold">Data solicitação</th>
+            <td mat-cell *matCellDef="let solicitacao">{{solicitacao.dtPedido | date: 'dd/MM/YYYY HH:mm'}}</td>
+          </ng-container>
+          <ng-container matColumnDef="tipo">
+            <th mat-header-cell *matHeaderCellDef class="bg-pmsv-primary text-white fw-bold d-none d-sm-table-cell">Tipo de Redução</th>
+            <td mat-cell *matCellDef="let solicitacao" class="d-sm-table-cell d-none">{{solicitacao.tipo}}</td>
+          </ng-container>
+          <ng-container matColumnDef="imprimir">
+            <th mat-header-cell *matHeaderCellDef class="bg-pmsv-primary text-white fw-bold"></th>
+            <td mat-cell *matCellDef="let solicitacao"><button class="btn btn-secondary" (click)="redirectToPDF(solicitacao)">Imprimir</button></td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="openDialog(row)"></tr>
+
+        </table>
+        <hr class="mt-0">
+        <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20, 50]" class="mb-3">
+        </mat-paginator>
+      </div>
+
+    </div>
+    <div class="card-footer d-flex justify-content-around p-3 flex-column flex-sm-row align-items-center gap-2">
+      <button class="btn-pmsv btn-pmsv-primary" routerLink="/solicitacoes/inicio">Voltar</button>
+      <button class="btn-pmsv btn-success" (click)="redirectToForm()">Realizar outra solicitação</button>
+    </div>
+  </div>
+</section>

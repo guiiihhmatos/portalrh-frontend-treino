@@ -1,0 +1,28 @@
+div.abono-natal {
+  width: 50%;
+  min-width: 350px;
+  align-self: center;
+
+  .pre-actions{
+    .material-symbols-outlined:hover{
+      cursor: pointer;
+      font-variation-settings:
+      'FILL' 1,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 48
+    }
+  }
+
+  div.form-group, div.form-group.row{
+    margin-top: 10px;
+  }
+  input#confirmacao{
+    width: 15px;
+    height: 15px;
+  }
+  label.form-label.confirmacao{
+    word-wrap: break-word;
+    word-break: break-all;
+  }
+}

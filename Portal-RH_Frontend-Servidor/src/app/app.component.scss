@@ -1,0 +1,39 @@
+.global{
+  display: flex;
+}
+
+header{
+  position: sticky;
+  top: 0;
+  z-index: 99;
+}
+
+.lateral
+{
+  width: 17vw;
+  height: 100vh;
+  position: fixed;
+}
+
+.central
+{
+  width: 83vw;
+  margin-left: 17vw;
+}
+
+.conteudo-servidor
+{
+  min-height: calc(100vh - 80px - 14vh);
+}
+@media only screen and (max-width: 1400px){
+  .global{
+    flex-direction: column;
+  }
+  .lateral{
+    display: none !important;
+  }
+  .central{
+    margin-left: 0;
+    width: 100%;
+  }
+}

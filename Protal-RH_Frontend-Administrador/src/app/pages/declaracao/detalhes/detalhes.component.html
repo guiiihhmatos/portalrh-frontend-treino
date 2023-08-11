@@ -1,0 +1,91 @@
+<div class="d-flex flex-column justify-content-center align-items-center mt-5">
+
+  <div class="mb-3">
+    <h5>Informações do Servidor {{nomeServidor}} </h5>
+  </div>
+
+  <div class="novo__container shadow">
+    <form [formGroup]="servidor">
+
+     <div>
+      <div class="row d-flex align-items-center justify-content-center my-3 mb-5">
+
+        <div class="col-md-10">
+          <div class="form-label">Nome</div>
+          <input class="form-control" formControlName="nome">
+        </div>
+
+      </div><!--Row Nome-->
+
+      <div class="row d-flex align-items-center justify-content-center my-3 mb-5">
+
+        <div class="col-md-5">
+          <div class="form-label">Protocolo</div>
+          <input class="form-control" formControlName="id">
+        </div>
+
+        <div class="col-md-5">
+          <div class="form-label">Matricula</div>
+          <input class="form-control" formControlName="matricula">
+        </div>
+
+      </div><!--Row Protocolo e Matricula -->
+
+      <div class="row d-flex align-items-center justify-content-center my-3 mb-5">
+
+        <div class="col-md-5">
+          <div class="form-label">Tipo</div>
+          <input class="form-control" formControlName="tipo">
+        </div>
+
+        <div class="col-md-5">
+          <div class="form-label">Retificações</div>
+          <input class="form-control" formControlName="retificacoes">
+        </div>
+
+      </div><!--Row Tipo e Numero de retificações -->
+
+      <div class="row d-flex align-items-center justify-content-center my-3 mb-5">
+
+        <div class="col-md-5">
+          <div class="form-label">Email</div>
+          <input class="form-control" formControlName="email">
+        </div>
+
+        <div class="col-md-5">
+          <div class="form-label">Data Envio</div>
+          <input class="form-control" formControlName="dtAtualizacao">
+        </div>
+
+      </div><!--Row Email e Data Envio -->
+
+      <div class="row d-flex align-items-center justify-content-center my-3 mb-5">
+
+        <div class="col-md-5">
+          <div class="form-label">Secretaria</div>
+          <input class="form-control" formControlName="secretaria">
+        </div>
+
+        <div class="col-md-5">
+          <div class="form-label">Local de Trabalho</div>
+          <input class="form-control" formControlName="localTrabalho">
+        </div>
+
+      </div><!--Row Secretaria e Local de Trabalho -->
+
+      </div>
+
+    </form>
+  </div>
+
+  <div class="d-flex justify-content-center mb-3">
+
+    <div>
+
+      <button class="button__voltar" (click)="backUrl()">Voltar</button>
+
+    </div>
+
+  </div>
+
+</div>

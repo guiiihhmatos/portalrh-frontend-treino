@@ -1,0 +1,167 @@
+<section class="formulario-vt container-fluid p-3 m-0 d-flex flex-column">
+  <h2 class="text-center mt-5"> Solicitação Vale Transporte </h2>
+
+  <div class="div_formulario p-2">
+    <a type="button" class="align-self-baseline mb-3 btn btn-secondary" routerLink="../../">Voltar</a>
+
+    <form class="formVT d-flex flex-column" [formGroup]="formVT" id="formVT">
+      <div class="form-group">
+        <label for="nome" class="form-label">Nome:</label>
+        <input type="text" name="nome" id="nome" class="form-control" formControlName="nome" readonly autocomplete="off">
+      </div>
+      <div class="form-group row">
+        <div class="form-group col">
+          <label for="registro" class="form-label">Registro:</label>
+          <input type="text" name="registro" id="registro" class="form-control" formControlName="matricula" readonly autocomplete="off">
+        </div>
+        <div class="form-group col">
+          <label for="rg" class="form-label">RG:</label>
+          <input type="text" name="rg" id="rg" class="form-control" formControlName="rg" readonly autocomplete="off">
+        </div>
+        <div class="form-group col-sm">
+          <label for="cpf" class="form-label">CPF:</label>
+          <input type="text" name="cpf" id="cpf" class="form-control" mask="000.000.000-00" formControlName="cpf"
+            readonly autocomplete="off">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="localTrabalho" class="form-label">Local de Trabalho:</label>
+        <input type="text" name="localTrabalho" id="localTrabalho" class="form-control" formControlName="localTrabalho"
+          readonly autocomplete="off">
+      </div>
+      <div class="form-group">
+        <label for="cargo" class="form-label">Cargo:</label>
+        <input type="text" name="cargo" id="cargo" class="form-control" formControlName="cargo" readonly autocomplete="off">
+      </div>
+      <!--Desabilitados-->
+      <div class="form-group">
+        <label for="operacao" class="form-label">Operação:</label>
+        <div class="d-flex">
+          <select name="operacao" id="operacao" class="form-select" formControlName="operacao" #operacao>
+            <option value="" selected disabled>---Selecione---</option>
+            <option [value]="op" *ngFor="let op of operacoes" [disabled]="solicitacoesNaoAtendidas.includes(op)">
+              {{op}}</option>
+          </select>
+          <button class="btn bg-pmsv-primary text-white d-flex btn_help" (click)="showHelp()">
+            <span class="material-symbols-outlined">question_mark</span>
+          </button>
+        </div>
+
+      </div>
+      <div class="form-group">
+        <label for="cep" class="form-label">CEP:</label>
+        <input type="text" name="cep" id="cep" class="form-control infoEnd" mask="00000-000" formControlName="cep"
+          (blur)="getCep($any($event.target).value)">
+      </div>
+      <div class="form-group row">
+        <div class="form-group col-sm-9">
+          <label for="endereco" class="form-label">Endereco:</label>
+          <input type="text" name="endereco" id="endereco" class="form-control infoEnd" formControlName="endereco"
+            oninput="this.value = this.value.toUpperCase()">
+        </div>
+        <div class="form-group col">
+          <label for="numeroEndereco" class="form-label">Numero:</label>
+          <input type="number" name="numeroEndereco" id="numeroEndereco" class="form-control infoEnd"
+            formControlName="numeroEndereco">
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="form-group col-md">
+          <label for="bairro" class="form-label">Bairro:</label>
+          <input type="text" name="bairro" id="bairro" class="form-control infoEnd" formControlName="bairro"
+            oninput="this.value = this.value.toUpperCase()">
+        </div>
+        <div class="form-group col-md">
+          <label for="complementoEndereco" class="form-label">Complemento:</label>
+          <input type="text" name="complementoEndereco" id="complementoEndereco" class="form-control"
+            formControlName="complementoEndereco" oninput="this.value = this.value.toUpperCase()" placeholder="(opcional)">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="municipio" class="form-label">Municipio:</label>
+        <input type="text" name="municipio" id="municipio" class="form-control infoEnd" formControlName="municipio"
+          oninput="this.value = this.value.toUpperCase()">
+      </div>
+
+      <div class="form-group" *ngIf="divComprovante">
+        <label for="comprovante" class="form-label">Comprovate de Endereço:</label>
+        <input type="file" name="comprovante" id="comprovante" class="form-control" accept="image/png, image/jpeg, .pdf" (input)="addFile($event)">
+        <label>Tamanho máximo: <span class="text-danger">2,5MB</span></label><br>
+        <label>Extensões permitidas: <span class="text-danger">.jpg .png .pdf</span></label>
+      </div>
+      <!--Anexo de documento-->
+
+      <div class="empresas_salvas d-flex justify-content-center mt-3" *ngIf="empresasVT.length > 0">
+        <table class="w-100">
+          <tr>
+            <th class="text-center">Empresa</th>
+            <th class="text-center">Valor Tarifa</th>
+            <th class="text-center">Qtd. Passagens</th>
+            <th class="text-center">Valor Total</th>
+            <th class="text-center"></th>
+          </tr>
+          <tr *ngFor="let empresa of empresasVT">
+            <td class="text-center">{{empresa.empresaTransportadora}}</td>
+            <td class="text-center">{{empresa.tarifa | currency : 'BRL'}}</td>
+            <td class="text-center">{{empresa.valorTotal / empresa.tarifa}}</td>
+            <td class="text-center">{{empresa.valorTotal | currency : 'BRL'}}</td>
+            <td class="text-center"><mat-icon color="warn" (click)="removeEmpresaVT(empresa)">delete</mat-icon></td>
+          </tr>
+        </table>
+      </div>
+
+      <button class="btn bg-pmsv-primary text-white d-flex justify-content-center mt-2 align-self-center"
+      id="addEmpresaVT" (click)="openFormEmpresa()" type="button" *ngIf="btnEmpresa">
+        <span>Adicionar empresa de ônibus</span> <span class="material-symbols-outlined">add</span>
+      </button>
+      <label class="text-danger" *ngIf="divEmpresaVT">Ressaltamos que apesar da indicação da empresa de preferência, o vale transporte é fornecido conforme critérios da Administração</label>
+
+      <div class="form_empresas_vt w-75 align-self-center" *ngIf="divEmpresaVT" >
+        <form [formGroup]="formEmpresaVT">
+          <div class="form-group">
+            <label for="empresaTransportadora" class="form-label">Empresa: </label>
+            <select name="empresaTransportadora" id="empresaTransportadora" formControlName="empresaTransportadora" class="form-select">
+              <option value="">--- Selecione a empresa ---</option>
+              <option [value]="empresa.descricao" *ngFor="let empresa of empresasOnibus">{{empresa.descricao}}</option>
+            </select>
+          </div>
+          <div class="form-group row">
+            <div class="form-group col">
+              <label for="passagens" class="form-label">Passagens/dia:</label>
+              <input type="number" name="passagens" id="passagens" class="form-control" #passagens (keyup)="calcVlTotal(tarifa.value, $any($event.target).value)">
+            </div>
+            <div class="form-group col">
+              <label for="tarifa" class="form-label">Tarifa:</label>
+              <input type="number" name="tarifa" id="tarifa" class="form-control" formControlName="tarifa" #tarifa (keyup)="calcVlTotal($any($event.target).value, passagens.value)">
+            </div>
+            <div class="form-group col-sm">
+              <label for="valorTotal" class="form-label">Valor Total:</label>
+              <input type="number" name="valorTotal" id="valorTotal" class="form-control" formControlName="valorTotal" readonly >
+            </div>
+          </div>
+          <div class="actions d-flex justify-content-center gap-5 mt-4">
+            <button class="btn btn-danger" (click)="divEmpresaVT=false" type="button">Cancelar</button>
+            <button class="btn btn-success" (click)="saveEmpresaVT(formEmpresaVT.value)" type="button">Salvar empresa</button>
+          </div>
+        </form>
+      </div>
+      <!--Formulario para adicionar empresas de onibus-->
+
+      <div class="form-group" *ngIf="divCartaoTransporte">
+        <label for="cartaoTransporte" class="form-label">Nº Cartão Transporte:</label>
+        <input type="text" name="cartaoTransporte" id="cartaoTransporte" class="form-control"
+          formControlName="cartaoTransporte">
+      </div>
+
+      <div class="form-group mt-3">
+        <input type="checkbox" name="confirmacao" id="confirmacao" #confirmacao>
+        <label for="confirmacao" class="form-label mx-3 text-danger">Confirmação</label>
+      </div>
+
+      <div class="action mt-4 d-flex justify-content-center">
+        <button class="btn-pmsv btn-pmsv-primary" (click)="enviarSolicitacaoVT(formVT.value)">Enviar
+          Solicitação</button>
+      </div>
+    </form>
+  </div>
+</section>

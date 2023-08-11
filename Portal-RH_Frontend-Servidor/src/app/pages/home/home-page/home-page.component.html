@@ -1,0 +1,116 @@
+<section id="paginas" class="container-fluid p-0 mb-5 d-flex flex-column">
+
+  <div class="d-flex flex-column cards_dashboard">
+    <!-- <h2 class="text-center mt-3">Página Inicial</h2> -->
+    <div class="d-flex flex-sm-row gap-3 mx-5 flex-column justify-content-evenly py-5">
+      <div class="card border-0 shadow p-2 avisos_card">
+        <h5 class="text-center mt-2">Avisos</h5>
+        <div class="d-flex justify-content-around align-items-center h-100">
+          <span class="material-symbols-outlined font-50">dataset</span>
+          <span class="font-40">{{avisos.length}}</span>
+        </div>
+      </div>
+      <div class="card border-0 shadow p-2 andamentos_card">
+        <h5 class="text-center mt-2"> Andamentos</h5>
+        <div class="d-flex justify-content-around align-items-center h-100">
+          <span class="material-symbols-outlined font-50">overview</span>
+          <span class="font-40">{{andamentos.length}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion accordion-flush mt-5 align-self-center border w-100">
+
+    <!-- Accordion de avisos -->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="avisos_accordion">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#avisos" aria-expanded="true" aria-controls="avisos">
+          <span class="font-30">Avisos</span>
+        </button>
+      </h2>
+      <div id="avisos" class="accordion-collapse collapse show" aria-labelledby="avisos_accordion">
+        <div class="accordion-body py-3">
+
+          <!--Caso não possua avisos-->
+          <div class="d-flex flex-column align-items-center sem_avisos" *ngIf="avisos.length == 0">
+            <span class="material-symbols-outlined">dataset</span>
+            <div class="d-flex flex-column align-items-center">
+              <p class="font-30 text-center">Tudo certo por aqui</p>
+              <p class="font-20 text-center">Voce não possui nenhum aviso pendente</p>
+            </div>
+          </div>
+
+          <!--Caso possua avisos-->
+          <div *ngIf="avisos.length > 0" class="d-flex accordion-body_avisos justify-content-evenly">
+              <div class="aviso_icon shadow px-3 py-2 d-flex align-items-center justify-content-around mx-1 my-2" *ngFor="let aviso of avisos" (click)="openDetailsAviso(aviso)">
+                <span class="material-symbols-outlined text-warning"> error </span>
+                <span class="text-center"><strong> {{aviso.titulo}}</strong></span>
+              </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+    <!-- Fim do accordion de avisos-->
+
+    <!-- Accordion de andamentos -->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="andamentos_accordion">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#andamentos" aria-expanded="true" aria-controls="andamentos">
+          <span class="font-30">Histórico de andamentos</span>
+        </button>
+      </h2>
+      <div id="andamentos" class="accordion-collapse collapse show" aria-labelledby="andamentos_accordion">
+        <div class="accordion-body">
+
+          <!--Caso não possua andamentos-->
+          <div class="d-flex flex-column align-items-center sem_andamentos" *ngIf="andamentos.length == 0">
+            <span class="material-symbols-outlined">overview</span>
+            <div class="d-flex flex-column align-items-center">
+              <p class="font-30 text-center">Tudo certo por aqui</p>
+              <p class="font-20 text-center">Voce não possui nenhum andamento</p>
+            </div>
+          </div>
+
+          <!--Caso possua andamentos-->
+          <div *ngIf="andamentos.length > 0" class="d-flex flex-column accordion-body_andamentos">
+            <div class="filtro_andamentos align-self-center p-3 shadow">
+              <form [formGroup]="filtroAndamentos" id="filtro_andamentos" class="d-flex flex-column">
+                <div class="form-group w-70 align-self-center">
+                  <p class="text-center"><strong>Solicitações realizadas</strong></p>
+                  <select name="solicitacoes" id="solicitacoes" class="form-select" formControlName="solicitacao">
+                    <option value="" selected disabled>--- Selecione a solicitação ---</option>
+                    <option [value]="solicitacao" *ngFor="let solicitacao of solicitacoesRealizadas">{{solicitacao}}</option>
+                  </select>
+                </div>
+              </form>
+            </div>
+
+            <div class="tabela_andamentos align-self-center mt-4 mat-elevation-z6" *ngIf="andamentosSelec.data.length > 0">
+              <table mat-table [dataSource]="andamentosSelec.data">
+                <ng-container matColumnDef="idSolicitacao">
+                  <th mat-header-cell *matHeaderCellDef class="bg-pmsv-primary text-white"> <strong>Protocolo</strong> </th>
+                  <td mat-cell *matCellDef="let andamento"> {{andamento.idSolicitacao.toString().padStart(4, "0")}} </td>
+                </ng-container>
+                <ng-container matColumnDef="dataOcorrencia">
+                  <th mat-header-cell *matHeaderCellDef class="bg-pmsv-primary text-white"> <strong>Data do andamento</strong> </th>
+                  <td mat-cell *matCellDef="let andamento"> {{andamento.dataOcorrencia | date: 'dd/MM/YYYY - HH:mm'}} </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="openDetailsAndamento(row)"></tr>
+              </table>
+              <hr class="m-0">
+              <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]">
+              </mat-paginator>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!-- Fim do accordion de andamentos -->
+    </div>
+  </div>
+
+</section>

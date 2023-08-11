@@ -1,0 +1,23 @@
+<div class="protocolo">
+  <div class="card">
+    <div class="card-header">
+      Protocolo
+    </div>
+    <div class="card-body">
+      <h5 class="card-title titulo">Recadastramento efetuado com Sucesso!</h5>
+
+      <div class="textos my-5">
+        <p class="card-text"><strong> N° do protocolo : </strong> {{protocolo}} </p>
+        <p class="card-text"><strong> Nome : </strong> {{dadosServidor.nome}} </p>
+        <p class="card-text"><strong>Registro : </strong> {{dadosServidor.matricula}} </p>
+        <p class="card-text"><strong>Data de envio : </strong> {{dataEnvio | date: 'dd/MM/YYYY - HH:mm'}} </p>
+
+      </div>
+
+      <div class="d-flex justify-content-between">
+        <button class="botao bg-success mt-3" (click)="redirectToPDF()">Imprimir</button>
+        <button class="botao bg-pmsv-primary mt-3" routerLink="/home">Voltar a home</button>
+      </div>
+    </div>
+  </div>
+</div>

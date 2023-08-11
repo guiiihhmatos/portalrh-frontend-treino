@@ -1,0 +1,75 @@
+section#formulario-recad{
+  min-height: calc(100vh - 80px - 14vh);
+
+  form#formRecad{
+
+    div.form-group{
+
+      div.inpt-edit{
+        display: flex;
+
+        input, select{
+          border-radius: 0.375rem 0 0 0.375rem;
+          flex: 8;
+        }
+        button.btn-edit{
+          background-color: var(--primary); //cdn variable
+          color: #fff;
+          border-radius: 0 0.375rem 0.375rem 0;
+          border: solid var(--primary); //cdn variable
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex: .5;
+
+          &:hover{
+            background-color: #387cb8;
+            border: solid #387cb8;
+            transition: 0.3s;
+          }
+          &:active{
+            transform: scale(0.9);
+          }
+          @media only screen and (max-width: 512px){
+            &{
+              flex: 1;
+            }
+          }
+        }
+        button.btn-edit-close{
+          background-color: #b52a1b;
+          color: #fff;
+          border-radius: 0 0.375rem 0.375rem 0;
+          border: solid #b52a1b;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex: .5;
+
+          &:hover{
+            background-color: #dc3545;
+            border: solid #dc3545;
+            transition: 0.3s;
+          }
+          &:active{
+            transform: scale(0.9);
+          }
+          @media only screen and (max-width: 512px){
+            &{
+              flex: 1;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  form#formChecks{
+    div.form-check{
+      padding: 0;
+      label.form-check-label{
+        text-align: justify;
+      }
+    }
+  }
+}

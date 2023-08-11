@@ -1,0 +1,59 @@
+.solicitacao-realizada
+{
+  height: 82.8vh;
+  width: 50%;
+  // min-width: 375px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.titulo
+{
+  color: #449d44;
+}
+
+.card-header
+{
+  background-color: #449d44;
+  color: white;
+}
+
+.card-header-red
+{
+  background-color: rgb(227, 39, 39);
+  color: white;
+}
+
+.color-text
+{
+  color: rgb(227, 39, 39);
+}
+
+.botao
+{
+  color: white;
+  background-color: #346692;
+  border: none;
+  height: 40px;
+  width: 120px;
+  border-radius: 10px;
+}
+
+@media only screen and (max-width: 1000px)
+{
+  .solicitacao-realizada
+  {
+    width: 70%;
+    margin: 0 15%;
+  }
+}
+
+@media only screen and (max-width: 600px)
+{
+  .solicitacao-realizada
+  {
+    width: 90%;
+    margin: 0 5%;
+  }
+}

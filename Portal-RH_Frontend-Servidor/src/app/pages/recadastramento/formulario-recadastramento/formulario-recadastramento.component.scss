@@ -1,0 +1,170 @@
+.campo {
+  width: 80%;
+  padding: 7px 20px;
+  margin: 8px 0;
+}
+
+.form__desabilitado {
+  background-color: #EEEEEE;
+  pointer-events: none;
+}
+
+.form__recadrastamento {
+  width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.botao__editar {
+  background-color: #346692;
+  border: none;
+  border-radius: 0 8px 8px 0;
+  height: 4vh;
+  width: 80px;
+  color: white;
+}
+
+.botao__remover {
+  background-color: rgb(227, 39, 39);
+  border: none;
+  border-radius: 0 8px 8px 0;
+  height: 4vh;
+  width: 80px;
+  color: white;
+}
+
+
+.input__editar {
+  border-radius: 8px 0 0 8px;
+}
+
+.botao__recadastrar {
+  background-color: #346692;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  height: 5vh;
+  width: 180px;
+}
+
+.botao__addDependentes {
+  background-color: #346692;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  height: 5vh;
+  width: 180px;
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+.botao__cancelar {
+  background-color: rgb(250, 50, 50);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  height: 3.8vh;
+  width: 90px;
+  font-size: 14px;
+}
+
+.botao__adicionar {
+  background-color: #346692;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  height: 3.8vh;
+  width: 90px;
+  font-size: 14px;
+}
+
+.botao__icone__editar {
+  background-color: white;
+  border: none;
+}
+
+/* ===== Tabela ===== */
+
+.tabela__thead {
+  background-color: #346692;
+  color: white;
+  height: 50px;
+  border: 1px solid black;
+}
+
+.tabela__thead th,
+td {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.tabela__tbody td {
+  height: 40px;
+}
+
+.tabela__tbody tr {
+  border: 1px solid black;
+}
+
+.checkboxes,
+.decreto {
+  color: #a94442;
+}
+
+
+.decreto, .checkboxes{
+  width: 50%;
+}
+
+.decreto p , .autorizacao label{
+  text-align: justify;
+}
+
+#meuArquivo {
+  background-color: #346692;
+}
+
+.messageTamanho {
+  color: red;
+}
+
+td mat-icon{
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 650px) {
+  .form__recadrastamento {
+    width: 100%;
+  }
+
+  input,
+  select,
+  label {
+    font-size: 12px;
+  }
+
+  .botao__editar {
+    height: 32px;
+  }
+
+  .tabela__div {
+    width: 90%;
+  }
+
+  .tabela__thead,
+  .tabela__tbody {
+    font-size: 13px;
+  }
+
+  .decreto {
+    width: 90%;
+    font-size: 12px;
+  }
+}
+
+@media only screen and (max-width: 410px) {
+  .form__recadrastamento {
+    width: 100%;
+  }
+}

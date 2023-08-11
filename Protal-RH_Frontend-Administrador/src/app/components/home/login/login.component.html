@@ -1,0 +1,28 @@
+
+<div class="container-fluid login_container p-0 ">
+
+  <div class="login_img p-0">
+    <img src="assets/images/logo-sv.png" alt="Brasão Logo São Vicente" class="mx-0 brasao">
+    <img src="assets/images/logo-nome-sv.png" alt="Nome Logo São Vicente" class="mx-0 nome">
+  </div>
+
+  <div class="login_inputs p-0 w-50">
+    <h2 class="text-center login_titulo">Rh Admin</h2>
+
+    <form class="login_form" (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+      <div class="form-group position-relative">
+        <input type="text" class="login_input usuario" id="usuario" required formControlName="username" maxlength="15" />
+        <label for="usuario" class="login_label usuario">Usuario</label>
+      </div>
+      <div class="form-group position-relative">
+        <input type="password" class="senha login_input" id="senha" required formControlName="password"/>
+        <label for="senha" class="senha login_label" >Senha</label>
+      </div>
+      <button class="btn-pmsv btn-pmsv-primary"> Login </button>
+
+    </form>
+  </div>
+
+</div>
+
+

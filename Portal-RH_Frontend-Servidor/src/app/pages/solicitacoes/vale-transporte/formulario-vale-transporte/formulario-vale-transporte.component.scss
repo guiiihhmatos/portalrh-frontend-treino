@@ -1,0 +1,65 @@
+section.formulario-vt {
+  min-height: calc(100vh - 80px - 14vh);
+
+  div.div_formulario {
+    width: 50%;
+    min-width: 500px;
+    align-self: center;
+
+    form#formVT{
+      button#addEmpresaVT{
+        &:hover{
+          background-color: #1c4467 !important;
+        }
+      }
+      div.form-group{
+        div {
+          select#operacao{
+            border-radius: 5px 0 0 5px;
+          }
+          button.btn_help{
+            border-radius: 0 5px 5px 0;
+            &:hover{
+              background-color: #1c4467 !important;
+            }
+          }
+        }
+      }
+
+      .form-group
+    {
+      margin-top: 7px;
+      margin-bottom: 7px;
+    }
+
+      div.empresas_salvas{
+        table{
+          tr{
+            border-left: solid 1px #000;
+            border-right: solid 1px #000;
+            th{
+              background-color: #1c4467;
+              color: #fff;
+            }
+            td{
+              background-color: #f6f6f6;
+              border-bottom: solid 1px #000;
+              mat-icon{
+                cursor: pointer;
+              }
+            }
+          }
+        }
+      }
+
+    }
+
+    @media only screen and (max-width: 550px){
+        min-width: 280px;
+        width: 90%;
+    }
+    @media only screen and (max-width: 450px){
+        width: 100%;
+    }
+  }
+}

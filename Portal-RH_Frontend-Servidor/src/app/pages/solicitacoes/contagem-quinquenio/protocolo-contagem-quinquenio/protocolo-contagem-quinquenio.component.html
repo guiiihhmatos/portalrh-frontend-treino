@@ -1,0 +1,23 @@
+<div class="protocolo">
+  <div class="card">
+    <div class="card-header">
+      Protocolo de solicitação: Contagem de Licença Prêmio
+    </div>
+    <div class="card-body">
+      <h5 class="card-title titulo">Solicitação efetuada com Sucesso!</h5>
+
+      <div class="textos">
+        <p class="card-text"><strong>N° do protocolo : </strong> {{idProtocoloString}} </p>
+        <p class="card-text"><strong>Nome : </strong> {{protocolo.nome}} </p>
+        <p class="card-text"><strong>Registro : </strong> {{protocolo.matricula}} </p>
+        <p class="card-text"><strong>Data de envio : </strong> {{protocolo.dtPedido | date: 'dd/MM/YYYY - HH:mm'}} </p>
+      </div>
+
+    </div>
+    <div class="card-footer d-flex justify-content-between">
+      <button class="btn btn-success mt-3 text-white" (click)="redirectToPDF()">Imprimir</button>
+      <button class="btn-pmsv btn-pmsv-primary mt-3 text-white" routerLink="/solicitacoes/inicio">Voltar às
+        solicitações</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+<section class="container-fluid solicitacao-realizada">
+  <div class="card mt-5">
+    <div class="card-header" id="top-header">
+      Solicitação Realizada: Não recebimento de abono de natal
+    </div>
+    <div class="card-body">
+      <h5 class="card-title titulo">Você já solicitou: Não recebimento abono de natal </h5>
+
+      <div class="textos">
+        <p class="card-text"><strong> N° do protocolo : </strong> {{idProtocoloString}}</p>
+        <p class="card-text"><strong> Nome soliciante : </strong> {{protocolo.nome}} </p>
+        <p class="card-text"><strong> Registro solicitante : </strong> {{protocolo.matricula}} </p>
+        <p class="card-text"><strong> Data da solicitação : </strong> {{protocolo.dtPedido | date : 'dd/MM/YYYY'}} </p>
+        <!-- <hr *ngIf="protocolo.andamento">
+        <p class="card-text" *ngIf="protocolo.andamento"><strong> Andamento : </strong> {{protocolo.andamento[lengthAndamento].observacao}} </p>
+        <p class="card-text" *ngIf="protocolo.andamento"><strong> Ultima atualização do andamento : </strong> {{protocolo.andamento[lengthAndamento].dataOcorrencia | date : 'dd/MM/YYYY - HH:mm'}} </p> -->
+      </div>
+
+    </div>
+    <div class="card-footer d-flex flex-column align-items-center">
+      <div class="w-100 d-flex justify-content-between">
+        <button class="btn btn-danger cancelar-solicitacao" data-bs-toggle="modal" data-bs-target="#confirmarCancelamento"> Cancelar Solicitação </button>
+        <button class="btn text-white bg-pmsv-primary" routerLink="/solicitacoes/inicio">Voltar às solicitações</button>
+      </div>
+      <div class="action-cancelar-solicitacao mt-3">
+        <button class="btn text-white btn-success" (click)="redirectToPDF()">Imprimir</button>
+      </div>
+    </div>
+  </div>
+
+  <!--Modal de confirmação de cancelamento de abono de natal-->
+  <div class="modal fade" id="confirmarCancelamento" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="confirmarCancelamentoLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5 w-100 text-center text-danger" id="confirmarCancelamentoLabel"> Atenção !</h1>
+        </div>
+        <div class="modal-body">
+          <p class="text-center"><strong> Deseja continuar com o cancelamento da solicitação para o não recebimento do abono de natal do ano atual?</strong></p>
+          <p class="text-center text-danger mb-0"><strong>Lembre-se que o prazo máximo é até o mês anterior ao de seu aniversário</strong> </p>
+        </div>
+        <div class="modal-footer d-flex justify-content-between">
+          <button type="button" class="btn bg-pmsv-primary text-white" data-bs-dismiss="modal">Fechar</button>
+          <button type="button" class="btn btn-danger" (click)="cancelarSolicitacao()" data-bs-dismiss="modal">Continuar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

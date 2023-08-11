@@ -1,0 +1,22 @@
+<div class="protocolo">
+  <div class="card">
+    <div class="card-header">
+      Protocolo Declaração de Bens
+    </div>
+    <div class="card-body">
+      <h5 class="card-title titulo">Recadastramento efetuado com Sucesso!</h5>
+
+      <div class="textos my-5">
+        <p class="card-text"><strong> N° do protocolo : </strong> {{protocoloDeclaracao.id}} </p>
+        <p class="card-text"><strong> Nome : </strong>  {{protocoloDeclaracao.nome}} </p>
+        <p class="card-text"><strong>Registro : </strong>  {{protocoloDeclaracao.matricula}} </p>
+        <p class="card-text"><strong>Data de envio : </strong> {{protocoloDeclaracao.dtAtualizacao | date: 'dd/MM/YYYY - HH:mm'}} </p>
+
+      </div>
+      <div class="d-flex justify-content-between">
+        <button class="btn btn-success mt-3 text-white" (click)="redirectToPDF()">Imprimir</button>
+        <button class="btn-pmsv btn-pmsv-primary mt-3 text-white" routerLink="/home">Voltar ao inicio</button>
+      </div>
+    </div>
+  </div>
+</div>

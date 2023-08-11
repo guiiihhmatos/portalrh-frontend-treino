@@ -1,0 +1,36 @@
+div.card.declaracao{
+  width: 50%;
+  min-width: 280px;
+  align-self: center;
+
+  form.formDeclaracao{
+    div.form-check{
+      input#confirmacao{
+        width: 15px;
+        height: 15px;
+      }
+    }
+    div.form-floating{
+      textarea#tipoTextArea{
+        min-height: 80px;
+      }
+    }
+
+    .form-group
+    {
+      margin-top: 7px;
+      margin-bottom: 7px;
+    }
+  }
+
+
+
+  @media only screen and (max-width:740px){
+    width: 70%;
+  }
+  @media only screen and (max-width:537px){
+    width: 100%;
+  }
+}
+
+

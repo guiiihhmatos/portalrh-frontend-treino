@@ -1,0 +1,137 @@
+<div class="menu__grh" style="background-color: #FCFDF7; border-bottom: 1px solid #eff1e3;">
+  <div class="teste__grh">
+      <img src="assets/image/login/grh.svg" alt="grh" class="image__grh">
+  </div>
+
+  <div class="d-flex justify-content-center align-items-center">
+      <img src="assets/image/login/brasao.pmsaovicente.jpg" alt="brasao" class="image__brasao">
+      <h4 class="title__prefeitura">Prefeitura Municipal de São Vicente</h4>
+  </div>
+</div>
+
+<div class="erro d-flex justify-content-center align-items-center" *ngIf="val">
+
+  <div class="text-center error-font">
+    <h2>Ocorreu um problema ao tentar efetuar o login. Possíveis erros: </h2>
+    <p>- Primeiro acesso, para efetuar o login é necessário cadastrar uma senha;</p>
+    <p>- Sua senha expirou, é necessário cadastrar a senha novamente;</p>
+    <p>- Dados informados ou senha incorreta.</p>
+  </div>
+
+</div>
+
+<div class="teste d-flex flex-column align-items-center">
+  <div class="login d-flex flex-column align-items-center">
+
+      <div class="login__title d-flex align-items-center">
+
+          <div class="login__title-1 h-100">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                  class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                      d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z" />
+                  <path fill-rule="evenodd"
+                      d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
+              </svg>
+          </div>
+
+          <div class="login__title-2">
+              <p>Login</p>
+          </div>
+
+      </div>
+
+      <form class="login__inputs mt-3" [formGroup]="loginForm">
+
+          <div class="d-flex justify-content-center align-items-center vamo">
+              <input type="number" nome="registro" id="registro" class="input__rh" placeholder="Registro Funcional"
+                  min="0" formControlName="matricula">
+
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                  class="bi bi-person-fill teste-icon" viewBox="0 0 16 16">
+                  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+              </svg>
+
+          </div>
+
+          <div class="d-flex justify-content-center align-items-center vamo">
+              <input type="text" nome="cpf" id="cpf" class="input__rh" placeholder="CPF" min="0" maxlength="11"
+                  formControlName="cpf" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                  class="bi bi-credit-card-2-front teste-icon" viewBox="0 0 16 16">
+                  <path
+                      d="M14 3a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h12zM2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2z" />
+                  <path
+                      d="M2 5.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z" />
+              </svg>
+
+          </div>
+
+          <div class="d-flex justify-content-center align-items-center vamo">
+              <input type="password" nome="senha" id="senha" class="input__rh" placeholder="Senha"
+                  formControlName="senha">
+
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                  class="bi bi-lock-fill teste-icon" viewBox="0 0 16 16">
+                  <path
+                      d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z" />
+              </svg>
+
+          </div>
+
+
+          <button class="botao__entrar d-flex justify-content-around align-items-center mt-3" type="submit"
+              (click)="onSubmit()">
+
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-key"
+                  viewBox="0 0 16 16">
+                  <path
+                      d="M0 8a4 4 0 0 1 7.465-2H14a.5.5 0 0 1 .354.146l1.5 1.5a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0L13 9.207l-.646.647a.5.5 0 0 1-.708 0L11 9.207l-.646.647a.5.5 0 0 1-.708 0L9 9.207l-.646.647A.5.5 0 0 1 8 10h-.535A4 4 0 0 1 0 8zm4-3a3 3 0 1 0 2.712 4.285A.5.5 0 0 1 7.163 9h.63l.853-.854a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.793-.793-1-1h-6.63a.5.5 0 0 1-.451-.285A3 3 0 0 0 4 5z" />
+                  <path d="M4 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+              </svg>
+              <div>
+                  Entrar
+              </div>
+          </button>
+      </form>
+
+      <div class="login__acessar mt-5">
+          <button class="botao__acessar d-flex justify-content-around align-items-center">
+
+              <div class="esqueci__senha d-flex justify-content-center align-items-center">
+                  <div class="seta__esquerda">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
+                          class="bi bi-arrow-left-short" viewBox="0 0 16 16">
+                          <path fill-rule="evenodd"
+                              d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z" />
+                      </svg>
+                  </div>
+                  <a href="https://online.saovicente.sp.gov.br/pmsaovicente/websis/_home/cadUserCPF.php?tipo=esqueci">Esqueci
+                      Senha</a>
+              </div>
+
+              <div class="criar__acesso d-flex justify-content-center align-items-center">
+                  <a href="https://online.saovicente.sp.gov.br/pmsaovicente/websis/_home/cadUserCPF.php">Criar
+                      Acesso</a>
+                  <div class="seta__direita">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
+                          class="bi bi-arrow-right-short" viewBox="0 0 16 16">
+                          <path fill-rule="evenodd"
+                              d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
+                      </svg>
+                  </div>
+              </div>
+          </button>
+      </div>
+
+
+  </div>
+
+  <div class="rh mt-2">
+      <div class="rh__p">
+          <p>Dúvidas, entre em contato com o Departamento de RH.
+              Tel: ( 13 ) 3579-1300</p>
+      </div>
+  </div>
+</div>

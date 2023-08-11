@@ -1,0 +1,102 @@
+<div class="d-flex flex-column justify-content-center align-items-center my-5">
+
+  <div class="mt-5">
+    <h3>Lista de Servidores - Declaração de bens</h3>
+  </div>
+
+  <div class="filtro__container d-flex flex-column justify-content-between shadow" *ngIf="divFiltro">
+
+    <div class="w-100 filtros__botoes">
+      <button class="button_search" (click)="ativarFiltro('secretaria')">Pesquisar por secretaria</button>
+      <button class="button_search" (click)="ativarFiltro('anoExercicio')">Pesquisar por exercício</button>
+    </div>
+
+    <div class="mx-5 w-100 filters">
+
+        <div class="default__filter">
+          <input matInput type="text" (keyup)="doFilter($any($event.target).value)" placeholder="Filtro padrão">
+        </div>
+
+        <div>
+
+        </div>
+
+        <div class="secretaria__filter" *ngIf="filtroSecretaria">
+
+          <select class="form-select pointer" aria-label="Default select example" [(ngModel)]="secretaria" (change)="getAllServidorBySecretaria()">
+
+            <option value=""> Selecione a secretaria </option>
+            <option [ngValue]="item" *ngFor="let item of secretarias"> {{ item }} </option>
+
+          </select>
+
+        </div>
+
+        <div class="secretaria__filter" *ngIf="filtroExercicio">
+
+          <select class="form-select pointer" aria-label="Default select example" [(ngModel)]="anoExercicio" (change)="getAllServidorByAnoExercicio()">
+
+            <option value="" disabled> Selecione o Ano de exercício </option>
+            <option [ngValue]="item" *ngFor="let item of anosExercicio"> {{ item }} </option>
+
+          </select>
+
+        </div>
+
+    </div>
+
+
+  </div>
+  <!--div filtro -->
+
+  <div class="botao__ativar__filtro">
+    <button (click)="exportexcel()" class="botao__ativar__filtro-botao">Exportar Excel</button>
+    <button class="botao__ativar__filtro-botao" (click)="adicionarFiltro()"> {{ divFiltro? "Ocultar Filtro" : "Usar Filtro"}} </button>
+  </div>
+
+  <div class="listar__container shadow mt-3">
+
+    <table mat-table #table [dataSource]="dataSource" matSort class="tabela" id="excel-table">
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Protocolo </th>
+        <td mat-cell *matCellDef="let element"> {{element.id }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="matricula">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Matrícula </th>
+        <td mat-cell *matCellDef="let element"> {{ element.matricula }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="nome">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome </th>
+        <td mat-cell *matCellDef="let element"> {{ element.nome }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="secretaria">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Secretaria </th>
+        <td mat-cell *matCellDef="let element"> {{ element.secretaria.split('-', 1) }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="exercicio">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Exercício </th>
+        <td mat-cell *matCellDef="let element"> {{ element.exercicio }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="tipo">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Tipo </th>
+        <td mat-cell *matCellDef="let element"> {{ element.tipo }} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="redirectDetails(row)"></tr>
+
+    </table>
+
+    <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20, 50, 100]">
+    </mat-paginator>
+
+  </div>
+
+
+</div>

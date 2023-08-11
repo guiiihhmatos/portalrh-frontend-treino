@@ -1,0 +1,318 @@
+<div class="d-flex flex-column justify-content-center align-items-center mt-5">
+
+  <div class="mb-3">
+    <h5>Informações do Servidor {{nomeServidor}} </h5>
+  </div>
+
+  <div class="novo__container shadow">
+    <div style="min-height: 550px;">
+      <form [formGroup]="servidor">
+        <div *ngIf="containerNome">
+         <div class="row d-flex align-items-center justify-content-center my-3 mb-5">
+
+           <div class="col-md-10">
+             <div class="form-label">Nome</div>
+             <input class="form-control" formControlName="nome">
+           </div>
+
+         </div><!--Row Nome-->
+
+         <div class="row d-flex align-items-center justify-content-center my-3 mb-5">
+
+           <div class="col-md-5">
+             <div class="form-label">Protocolo</div>
+             <input class="form-control" formControlName="id">
+           </div>
+
+           <div class="col-md-5">
+             <div class="form-label">Matrícula</div>
+             <input class="form-control" formControlName="matricula">
+           </div>
+
+         </div><!--Row Matrícula e Protocolo -->
+
+         <div class="row d-flex align-items-center justify-content-center my-3 mb-5">
+
+           <div class="col-md-5">
+             <div class="form-label">CPF</div>
+             <input class="form-control" formControlName="cpf">
+           </div>
+
+           <div class="col-md-5">
+             <div class="form-label">RG</div>
+             <input class="form-control" formControlName="rg">
+           </div>
+
+         </div><!--Row CPF e RG -->
+
+         <div class="row d-flex align-items-center justify-content-center my-3 mb-5">
+
+           <div class="col-md-5">
+             <div class="form-label">Data Pedido</div>
+             <input class="form-control" formControlName="dtPedido">
+           </div>
+
+           <div class="col-md-5">
+            <div class="form-label">Tipo</div>
+            <input class="form-control" formControlName="tipo">
+          </div>
+
+         </div><!--Row Data Pedido e Cartão Transporte -->
+
+         <div class="row d-flex align-items-center justify-content-center my-3 mb-5">
+
+           <div class="col-md-10">
+             <div class="form-label">Conteúdo</div>
+             <input class="form-control" formControlName="conteudo">
+           </div>
+
+         </div><!--Row Operação e concluido -->
+
+        </div> <!--container nome-->
+
+        <div *ngIf="containerInfo">
+
+         <div class="row d-flex align-items-center justify-content-center my-3 mb-5">
+
+           <div class="col-md-5" *ngIf="dtConcluido != null">
+             <div class="form-label">Concluído</div>
+             <input class="form-control" formControlName="concluido">
+           </div>
+
+           <div class="col-md-10" *ngIf="dtConcluido == null">
+             <div class="form-label">Concluído</div>
+             <input class="form-control" formControlName="concluido">
+           </div>
+
+           <div class="col-md-5" *ngIf="dtConcluido != null">
+             <div class="form-label">Data Atendimento</div>
+             <input class="form-control" formControlName="dtConcluido">
+           </div>
+
+         </div><!--Row concluido e Data do Atendimento -->
+
+         <div class="row d-flex align-items-center justify-content-center my-3 mb-5">
+
+           <div class="col-md-5">
+             <div class="form-label">Secretaria</div>
+             <input class="form-control" formControlName="secretaria">
+           </div>
+
+           <div class="col-md-5">
+             <div class="form-label">Local de Trabalho</div>
+             <input class="form-control" formControlName="localTrabalho">
+           </div>
+
+         </div><!--Row Local de Trabalho e Cargo -->
+
+
+         <div class="row d-flex align-items-center justify-content-center my-3 mb-5">
+
+           <div class="col-md-5">
+             <div class="form-label">CEP</div>
+             <input class="form-control" formControlName="cep">
+           </div>
+
+           <div class="col-md-5">
+             <div class="form-label">Endereço</div>
+             <input class="form-control" formControlName="endereco">
+           </div>
+
+         </div><!--Row CEP e Endereço -->
+
+         <div class="row d-flex align-items-center justify-content-center my-3 mb-5">
+
+           <div class="col-md-5">
+             <div class="form-label">Número do Endereço</div>
+             <input class="form-control" formControlName="numeroEndereco">
+           </div>
+
+           <div class="col-md-5">
+             <div class="form-label">Complemento do Endereço</div>
+             <input class="form-control" formControlName="complementoEndereco">
+           </div>
+
+         </div><!--Row Complemento Endereço e Numero Endereço -->
+
+         <div class="row d-flex align-items-center justify-content-center my-3 mb-5">
+
+           <div class="col-md-5">
+             <div class="form-label">Município</div>
+             <input class="form-control" formControlName="municipio">
+           </div>
+
+           <div class="col-md-5">
+             <div class="form-label">Bairro</div>
+             <input class="form-control" formControlName="bairro">
+           </div>
+
+         </div><!--Row CPF e Telefone -->
+
+        </div><!-- Container info-->
+
+        <div *ngIf="containerAndamento">
+
+          <div class="row d-flex align-items-center justify-content-center mt-3 mb-5">
+
+            <div class="col-md-12 text-center">
+              <div class="form-label">
+                <h2>Arquivos</h2>
+              </div>
+
+              <div *ngIf="arquivos.length > 0" class="div__arquivos">
+                <div *ngFor="let item of arquivos" class="d-flex justify-content-center align-items-center w-100 mb-3">
+                  <div class="div__arquivos-1">
+                    <p> {{item.nomeArquivo}} </p>
+                  </div>
+                  <div class="div__arquivos-2">
+                    <button class="button__visualizar" (click)="verArquivo(item.urlDownload, 'visualizar')"> Visualizar </button>
+                  </div>
+                  <div class="div__arquivos-3">
+                    <button class="button__baixar" (click)="verArquivo(item.urlDownload, 'baixar')"> Baixar </button>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                {{ arquivoSelecionado }}
+              </div>
+
+              <div *ngIf="arquivos.length == 0">
+                <h4>Não possui arquivos</h4>
+              </div>
+
+            </div>
+
+          </div><!--Row alteracoes-->
+
+         <div *ngIf="andamentos.length > 0">
+
+           <div class="d-flex justify-content-center dependentes__title mt-2">
+             <h4>Andamento</h4>
+           </div>
+           <div class="div__tabela">
+             <table class="text-center tabela">
+               <thead class="tabela__thead">
+                 <tr>
+                   <th>Protocolo</th>
+                   <th>Observação</th>
+                   <th>Data de Ocorrência</th>
+                 </tr>
+               </thead>
+               <tbody *ngFor="let item of andamentos" class="tabela__tbody">
+                 <tr>
+                   <td> {{item.id}} </td>
+                   <td> {{item.observacao}} </td>
+                   <td> {{item.dataOcorrencia | date : "dd/MM/yyyy HH:mm"}} </td>
+                 </tr>
+               </tbody>
+             </table>
+           </div>
+
+         </div>
+
+         <div *ngIf="andamentos.length <= 0">
+
+          <div class="d-flex justify-content-center dependentes__title mt-2 mb-5">
+            <h4>Nenhum Andamento foi adicionado</h4>
+          </div>
+         </div>
+
+         <div class="row d-flex align-items-center justify-content-center mt-5 div_buttons" *ngIf="!concluido">
+
+           <div class="col-md-10 d-flex align-items-center justify-content-around">
+             <button class="button__pdf" data-bs-toggle="modal" (click)="redirectDetails(servidorPdf)">Gerar PDF</button>
+             <button class="button__andamento" data-bs-toggle="modal" data-bs-target="#exampleModal2">Adicionar Andamento</button>
+             <button class="button__atender" data-bs-toggle="modal" data-bs-target="#exampleModal1">Marcar como concluído</button>
+           </div>
+
+         </div><!--Row validar e invalidar-->
+        </div>
+
+       </form>
+    </div>
+
+    <div class="d-flex justify-content-between div__arrows mb-3">
+
+      <div class="col-md-1 d-flex align-items-center justify-content-center" *ngIf="valArrowLeft">
+
+        <button class="button__arrow" (click)="arrowActive('left')">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-arrow-left-circle-fill botao" viewBox="0 0 16 16">
+            <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+          </svg>
+        </button>
+
+      </div>
+
+      <div class="col-md-1" *ngIf="!valArrowLeft || !valArrowRight"></div>
+
+      <div class="col-md-1 d-flex align-items-center justify-content-center" *ngIf="valArrowRight">
+
+        <button (click)="arrowActive('right')" class="button__arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-arrow-right-circle-fill botao" viewBox="0 0 16 16">
+            <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
+          </svg>
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="d-flex justify-content-center mb-3">
+
+    <div>
+
+      <button class="button__voltar" (click)="backUrl()">Voltar</button>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- Modal Andamento -->
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Marcar como concluído</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <p>Você deseja marcar a solicitação do servidor {{ nomeServidor }} como concluída ?</p>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="button__atender" (click)="marcarComoconcluido()" data-bs-dismiss="modal">Marcar como concluída</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Andamento -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Adicionar Andamento</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="motivo">
+          <div>
+            <div class="form-label">Informe a observação:</div>
+            <input type="text" class="form-control mb-5" formControlName="motivoAndamento" [(ngModel)]="motivoInput">
+          </div>
+        </form>
+        <p>Você deseja Adicionar andamento a solicitação do servidor {{ nomeServidor }} ?</p>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="button__andamento" (click)="adicionarAndamento()" data-bs-dismiss="modal">Adicionar Andamento</button>
+      </div>
+    </div>
+  </div>
+</div>

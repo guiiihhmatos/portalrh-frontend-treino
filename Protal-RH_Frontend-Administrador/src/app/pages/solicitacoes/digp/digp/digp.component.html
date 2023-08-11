@@ -1,0 +1,36 @@
+<section class="d-flex flex-column justify-content-center align-items-center w-100 mt-5">
+
+  <div class="row gx-0 solicitacoes w-80 justify-content-around mt-5">
+
+    <div class="col-md-2 solicitacoes__block shadow" (click)="redirectPages('declaracoes')">
+      <h4 class="title__block">Declarações</h4>
+
+      <div>
+        <span class="material-symbols-outlined icone">
+          post_add
+          </span>
+      </div>
+    </div>
+
+    <div class="col-2 solicitacoes__block shadow" (click)="redirectPages('reducao-carga-horaria')">
+      <h4 class="title__block">Redução de carga horária</h4>
+
+      <div>
+        <span class="material-symbols-outlined icone">
+          manage_history
+          </span>
+      </div>
+
+    </div>
+
+    <div class="col-2 solicitacoes__block shadow" (click)="redirectPages('licenca-sem-vencimento')">
+      <h4 class="title__block">Licença sem vencimento</h4>
+
+      <span class="material-symbols-outlined icone">
+        work_history
+        </span>
+    </div>
+
+  </div>
+
+</section>

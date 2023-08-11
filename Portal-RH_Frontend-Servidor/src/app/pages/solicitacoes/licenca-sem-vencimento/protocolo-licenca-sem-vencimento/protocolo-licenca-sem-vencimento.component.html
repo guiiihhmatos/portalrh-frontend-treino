@@ -1,0 +1,30 @@
+<div class="protocolo">
+  <div class="card">
+    <div class="card-header">
+      Protocolo de solicitação: Licença para tratar de interesses particulares (Licença sem vencimento)
+    </div>
+    <div class="card-body">
+      <h5 class="card-title titulo">Solicitação efetuada com Sucesso!</h5>
+
+      <div class="textos">
+        <p class="card-text"><strong>N° do protocolo : </strong> {{idProtocoloString}} </p>
+        <p class="card-text"><strong>Nome : </strong> {{protocolo.nome}} </p>
+        <p class="card-text"><strong>Registro : </strong> {{protocolo.matricula}} </p>
+        <p class="card-text"><strong>Data de envio : </strong> {{protocolo.dtPedido | date: 'dd/MM/YYYY - HH:mm'}} </p>
+        <hr>
+        <p class="tex-center">Lembre-se de checar o andamento da sua solicitação
+        <p class="tex-center">Aguarde até que seja <strong>DEFERIDA</strong> ou <strong>INDEFERIDA</strong> para que possa tirar a licença solicitada</p>
+        <hr>
+        <p class="card-text d-flex align-items-center">
+          <strong>Termos de declaração aceitos: </strong>
+          <button class="btn btn-secondary mx-5" (click)="openTerms()">Visualizar</button>
+        </p>
+      </div>
+    </div>
+
+    <div class="card-footer d-flex justify-content-between">
+      <button class="btn btn-success mt-3 text-white" (click)="redirectToPDF()">Imprimir</button>
+      <button class="btn-pmsv btn-pmsv-primary mt-3 text-white" routerLink="/solicitacoes/inicio">Voltar às solicitações</button>
+    </div>
+  </div>
+</div>

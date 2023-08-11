@@ -1,0 +1,515 @@
+<div>
+  <div class="formulario d-flex flex-column align-items-center mb-5" *ngIf="!valEnviado">
+    <h4 class="mt-5">RECADASTRAMENTO ANUAL</h4>
+
+    <form [formGroup]="recadastramento" class="form__recadrastamento" ngForm>
+      <div class="campo">
+        <label class="form-label">Registro:</label>
+        <input type="text" autocomplete="off" nome="matricula" id='matricula' class="form-control w-100"
+          formControlName="matricula" [class]="classes">
+      </div>
+
+      <div class="campo">
+        <label class="form-label">Nome Social :</label>
+        <input type="text" autocomplete="off" nome="nomeSocial" id='nomeSocial' class="form-control w-100"
+          formControlName="nomeSocial" oninput="this.value = this.value.toUpperCase()" maxlength="30">
+      </div>
+
+      <div class="campo">
+        <label class="form-label">Nome Completo:</label>
+        <div class="d-flex justify-content-around align-items-center">
+          <input type="text" autocomplete="off" nome="nome" id='nome' class="form-control input__editar"
+            formControlName="nome" [class]="classes" oninput="this.value = this.value.toUpperCase()">
+          <button (click)="ativarInput('nome')" class="botao__editar" *ngIf="!valNome">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill"
+              viewBox="0 0 16 16">
+              <path
+                d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z" />
+            </svg>
+          </button>
+          <button (click)="ativarInput('nome')" class="botao__remover" *ngIf="valNome">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+              <path
+                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="campo" *ngIf="valNome">
+
+        <div class="text-center">
+          <label class="form-label text-danger">Enviar comprovante para atualizar nome: <br> (Ex: Certidão casamento,
+            Certidão de troca de nome, etc...)</label>
+          <input class="form-control" type="file" accept="image/png, image/jpeg, .pdf" id="fileNome"
+            (change)="onChangeNome($event)">
+          <label>Tamanho máximo: <span class="text-danger">2,5MB</span></label><br>
+          <label>Extensões permitidas: <span class="text-danger">.jpg .png .pdf</span></label>
+
+
+
+        </div>
+
+      </div>
+
+      <div class="campo">
+        <label class="form-label">Grau de instrução:</label>
+        <div class="d-flex justify-content-around align-items-center">
+          <select class="form-select pointer input__editar" id="grauInstrucao" aria-label="Default select example"
+            formControlName="grauInstrucao" [class]="classes">
+            <option [value]="item.chave" *ngFor="let item of grau_instrucao"> {{item.descricao}} </option>
+          </select>
+          <button (click)="ativarInput('grauInstrucao')" class="botao__editar" *ngIf="!valGrauInstrucaoBotao">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill"
+              viewBox="0 0 16 16">
+              <path
+                d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z" />
+            </svg>
+          </button>
+          <button (click)="ativarInput('grauInstrucao')" class="botao__remover" *ngIf="valGrauInstrucaoBotao">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+              <path
+                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="campo" *ngIf="valCurso && !servidor.formacaoSuperior">
+        <label class="form-label">Área da formação: </label>
+        <input type="text" autocomplete="off" list="cursos" nome="formacaoSuperior" id='formacaoSuperior'
+          class="form-control w-100" formControlName="formacaoSuperior" maxlength="30"
+          oninput="this.value = this.value.toUpperCase()">
+        <datalist id="cursos">
+          <option [value]="item.descricao" *ngFor="let item of cursos">
+        </datalist>
+      </div>
+      <div class="campo" *ngIf="servidor.formacaoSuperior && (idGrauInst >= 8 && idGrauInst <=12)">
+        <label class="form-label">Área da formação: </label>
+        <div class="d-flex justify-content-around align-items-center">
+          <input type="text" autocomplete="off" list="cursos" nome="formacaoSuperiorEdit" id='formacaoSuperiorEdit'
+            class="form-control w-100 input__editar" [class]="classes" formControlName="formacaoSuperior" maxlength="30"
+            oninput="this.value = this.value.toUpperCase()">
+          <datalist id="cursos">
+            <option [value]="item.descricao" *ngFor="let item of cursos">
+          </datalist>
+          <button (click)="ativarInput('formacaoSuperiorEdit')" class="botao__editar" *ngIf="!valFormacaoBotao">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill"
+              viewBox="0 0 16 16">
+              <path
+                d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z" />
+            </svg>
+          </button>
+          <button (click)="ativarInput('formacaoSuperiorEdit')" class="botao__remover" *ngIf="valFormacaoBotao">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+              <path
+                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="campo" *ngIf="valGrauInstrucao">
+        <div class="text-center">
+          <label class="form-label text-danger">Enviar comprovante para atualizar grau de instrução: <br> (Ex:
+            Certidão de conclusão de Ensino Médio, Superior, etc...)</label>
+          <label class="form-label text-danger">( Facultativo )</label>
+          <input class="form-control" type="file" accept="image/png, image/jpeg, .pdf"
+            (change)="onChangeGrauInstrucao($event)">
+          <label>Tamanho máximo: <span class="text-danger">2,5MB</span></label><br>
+          <label>Extensões permitidas: <span class="text-danger">.jpg .png .pdf</span></label>
+
+
+        </div>
+      </div>
+
+      <div class="campo">
+        <label class="form-label">Data de Nascimento:</label>
+        <input type="date" nome="dtNasc" id='dtNasc' class="form-control w-100" formControlName="dtNascimento"
+          [class]="classes">
+      </div>
+
+      <div class="campo">
+        <label class="form-label">RG:</label>
+        <input type="text" autocomplete="off" nome="rg" id='rg' class="form-control w-100"           formControlName="rg" [class]="classes">
+      </div>
+
+      <div class="campo">
+        <label class="form-label">CPF:</label>
+        <input type="text" autocomplete="off" nome="cpf" id='cpf' class="form-control w-100" formControlName="cpf"
+          [class]="classes" mask="000.000.000-00">
+      </div>
+
+      <div class="campo">
+        <label class="form-label">Raça:</label>
+        <select class="form-select pointer" aria-label="Default select example" formControlName="racaCor">
+          <option [value]="item.chave" *ngFor="let item of raca_cor"> {{item.descricao}} </option>
+        </select>
+      </div>
+
+      <div class="campo">
+        <label class="form-label">Local de Trabalho:</label>
+        <div class="d-flex justify-content-around align-items-center">
+          <input type="text" autocomplete="off" nome="localTrabalho" id='localTrabalho' class="form-control w-100"
+            formControlName="localTrabalho" [class]="classes">
+        </div>
+      </div>
+
+      <div class="campo">
+        <label class="form-label">Secretaria:</label>
+        <div class="d-flex justify-content-around align-items-center">
+          <select type="text" nome="secretaria" id='secretaria' class="form-control pointer "
+            formControlName="secretaria" [class]="classes">
+            <option [value]="item.sigla" *ngFor="let item of secretarias">{{item.descricao}}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="campo">
+        <label class="form-label">Cargo:</label>
+        <div class="d-flex justify-content-around align-items-center">
+          <input type="text" autocomplete="off" nome="cargo" id='cargo' class="form-control w-100"
+            formControlName="cargo" [class]="classes">
+        </div>
+      </div>
+
+      <div class="campo">
+        <label class="form-label">Telefone:</label>
+        <input type="text" autocomplete="off" nome="telefone" id='telefone' maxlength="16" class="form-control w-100"
+          formControlName="telefone" mask="(00) 0000-0000 || (00) 0 0000-0000"
+          onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+      </div>
+
+      <div class="campo">
+        <label class="form-label">Estado Civil:</label>
+        <div class="d-flex justify-content-around align-items-center">
+          <select class="form-select pointer input__editar" id="estadoCivil" aria-label="Default select example"
+            formControlName="estadoCivil" [class]="classes">
+            <!-- <option [value]="item.chave" *ngFor="let item of estado_civil"> {{item.descricao}} </option> -->
+            <option value="1" [disabled]="servidor.estadoCivil != 1"> Solteiro </option>
+            <option value="2"> Casado </option>
+            <option value="3"> Divorciado </option>
+            <option value="4"> Separado </option>
+            <option value="5"> Viúvo </option>
+          </select>
+          <button (click)="ativarInput('estadoCivil')" class="botao__editar" *ngIf="!valEstadocivilBotao">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill"
+              viewBox="0 0 16 16">
+              <path
+                d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z" />
+            </svg>
+          </button>
+          <button (click)="ativarInput('estadoCivil')" class="botao__remover" *ngIf="valEstadocivilBotao">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+              <path
+                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+
+
+      <div class="campo" *ngIf="idEstadoCivil == 2 && !validacao && valCasado">
+        <label class="form-label">Nome do cônjuge: </label>
+        <input type="text" autocomplete="off" nome="nomeConjuge" id='nomeConjuge' class="form-control w-100"
+          formControlName="nomeConjuge" oninput="this.value = this.value.toUpperCase()" maxlength="30">
+      </div>
+
+      <div class="campo" *ngIf="validacao && idEstadoCivil == 2">
+        <label for="cpf">Nome do cônjuge:</label>
+        <div class="d-flex justify-content-around align-items-center">
+          <input type="text" autocomplete="off" nome="nomeConjuge" id="nomeConjugeEdit"
+            class="form-control input__editar" formControlName="nomeConjuge" [class]="classes"
+            oninput="this.value = this.value.toUpperCase()" maxlength="30">
+
+          <button (click)="ativarInput('nomeConjugeEdit')" class="botao__editar" *ngIf="!nomeConjugeBotao">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill"
+              viewBox="0 0 16 16">
+              <path
+                d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z" />
+            </svg>
+          </button>
+          <button (click)="ativarInput('nomeConjugeEdit')" class="botao__remover" *ngIf="nomeConjugeBotao">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+              <path
+                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="campo" *ngIf="valEstadoCivil && idEstadoCivil != 1 ">
+
+        <div class="text-center">
+          <label class="form-label text-danger">Enviar comprovante para atualizar estado civil: <br> (Ex: Certidão de
+            casamento, divórcio, óbito, etc...)</label>
+          <input class="form-control" type="file" accept="image/png, image/jpeg, .pdf"
+            (change)="onChangeEstadoCivil($event)">
+          <label>Tamanho máximo: <span class="text-danger">2,5MB</span></label><br>
+          <label>Extensões permitidas: <span class="text-danger">.jpg .png .pdf</span></label>
+
+
+        </div>
+
+      </div>
+
+      <div class="campo">
+        <label for="email">Email:</label>
+        <input type="text" autocomplete="off" nome="email" id="email" class="form-control" formControlName="email">
+      </div>
+
+      <div class="campo">
+        <label for="cep">CEP:</label>
+        <div class="d-flex justify-content-around align-items-center">
+          <input type="text" autocomplete="off" nome="cep" id="cep" class="form-control input__editar"
+            formControlName="cep" [class]="classes" [(ngModel)]="cep" (blur)="getCep($any($event.target).value)"
+            mask="00000-000" maxlength="9" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+          <button (click)="ativarInput('cep')" class="botao__editar" *ngIf="!valCep">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill"
+              viewBox="0 0 16 16">
+              <path
+                d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z" />
+            </svg>
+          </button>
+          <button (click)="ativarInput('cep')" class="botao__remover" *ngIf="valCep">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+              <path
+                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="campo" *ngIf="valCep">
+
+        <div class="text-center">
+          <label class="form-label text-danger">Enviar comprovante para atualizar endereço: <br> (Ex: Conta de luz,
+            telefone, água, gás, etc..)</label>
+          <input class="form-control" type="file" accept="image/png, image/jpeg, .pdf" (change)="onChangeCep($event)">
+          <label>Tamanho máximo: <span class="text-danger">2,5MB</span></label><br>
+          <label>Extensões permitidas: <span class="text-danger">.jpg .png .pdf</span></label>
+        </div>
+
+      </div>
+
+      <div class="campo">
+        <label for="cpf">Tipo Logradouro:</label>
+        <select class="form-select" name="tipoLogradouro" id="tipoLogradouro" formControlName="tipoLogradouro"
+          [class]="classes">
+          <option value="" disabled selected>--- Selecione o Tipo ---</option>
+          <option [value]="item.chave" *ngFor="let item of tiposLogradouros">{{item.descricao}}</option>
+        </select>
+      </div>
+
+      <div class="campo">
+        <label for="cpf">Endereço:</label>
+        <input type="text" autocomplete="off" nome="endereco" id="endereco" class="form-control"
+          formControlName="endereco" [class]="classes" oninput="this.value = this.value.toUpperCase()">
+      </div>
+
+      <div class="campo">
+        <label for="cpf">Número:</label>
+        <input type="text" autocomplete="off" nome="numeroEndereco" id="numeroEndereco" class="form-control"
+          formControlName="numeroEndereco" [class]="classes">
+      </div>
+
+      <div class="campo">
+        <label for="cpf">Complemento Endereço:</label>
+        <input type="text" autocomplete="off" nome="complementoEndereco" id="complementoEndereco" class="form-control"
+          formControlName="complementoEndereco" maxlength="30" [class]="classes" oninput="this.value = this.value.toUpperCase()">
+      </div>
+
+      <div class="campo">
+        <label for="cpf">Município:</label>
+        <!-- <input type="text" nome="municipio" id="municipio" class="form-control" formControlName="municipio"
+          [class]="classes"> -->
+        <select name="municipio" id="municipio" class="form-control" formControlName="municipio" [class]="classes">
+          <option [value]="item.codigo" *ngFor="let item of cidades"> {{item.nome}} </option>
+        </select>
+      </div>
+
+      <div class="campo">
+        <label for="cpf">Bairro:</label>
+        <input type="text" autocomplete="off" nome="bairro" id="bairro" class="form-control" formControlName="bairro"
+          [class]="classes" oninput="this.value = this.value.toUpperCase()">
+      </div>
+
+    </form>
+
+    <form [formGroup]="dependentesForm" class="form__recadrastamento">
+      <div class="d-flex justify-content-around align-items-center mt-5">
+
+        <div>
+          <h4><strong>DEPENDENTES</strong></h4>
+        </div>
+
+      </div>
+
+      <div class="tabela__div" *ngIf="dependentesTrue">
+        <table class="text-center">
+          <thead class="tabela__thead">
+            <tr>
+              <th>Nome Completo</th>
+              <th>Data de Nascimento</th>
+              <th>CPF</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let item of dependentes" class="tabela__tbody">
+            <tr>
+              <td> {{item.nome}} </td>
+              <td> {{item.dtNascimento | date : "dd/MM/yyyy"}} </td>
+              <td> {{ item.cpf==null ||item.cpf=='' || item.cpf==undefined? 'não informado': item.cpf | mask:
+                '000.000.000-00'}} </td>
+              <td>
+                <mat-icon aria-hidden="false" aria-label="Deletar" fontIcon="delete" color="warn"
+                  data-bs-toggle="modal"
+                  attr.data-bs-target="#excluirDependente{{item.nome.replaceAll('.','').replaceAll(' ', '_')}}"></mat-icon>
+              </td>
+              <td>
+                <mat-icon aria-hidden="false" aria-label="Deletar" fontIcon="edit" color="primary"
+                  (click)="enableFormEditDependente(item)"></mat-icon>
+                </td>
+            </tr>
+            <!-- Modal confirmação exclusão de dependente -->
+            <div class="modal fade" id="excluirDependente{{item.nome.replaceAll('.','').replaceAll(' ', '_')}}"
+              data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+              aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Remoção de Dependente</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="motivo-remocao" *ngIf="item.id != null">
+                      <label class="form-label">Informe o motivo:</label>
+                      <input type="text" autocomplete="off" nome="motivoRemocaoDependente" id='motivoRemocaoDependente'
+                        class="form-control w-100" (keyup)="motivoRmDep = $any($event.target).value">
+                    </div>
+                    <br>
+                    Deseja remover o dependente <strong> {{item.nome}}? </strong>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não remover</button>
+                    <button type="button" class="btn btn-danger"
+                      [attr.data-bs-dismiss]="motivoRmDep != '' || item.id == null? 'modal' : null"
+                      (click)="motivoRmDep != '' || item.id == null ? removeDependente(item, motivoRmDep): null">Remover</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </tbody>
+        </table>
+      </div>
+
+      <div *ngIf="!dependentesTrue">
+
+        <p>Não possui dependentes</p>
+
+      </div>
+
+      <div>
+
+        <button class="mt-5 botao__addDependentes" (click)="enableFormAddDependente()">Adicionar Dependentes</button>
+
+      </div>
+
+      <div *ngIf="addDependentes" class="w-100 d-flex flex-column align-items-center justify-content-center">
+
+        <div class="campo">
+          <label class="form-label">Nome do dependente:</label>
+          <input type="text" autocomplete="off" nome="dependentesNome" id='dependentesNome' class="form-control w-100"
+            formControlName="nome"
+            oninput="this.value = this.value.toUpperCase()"><!--(keyup)="nomeDep = $any($event.target).value.trim()"-->
+        </div>
+
+        <div class="campo">
+          <label class="form-label">Data de Nascimento:</label>
+          <input type="date" max="{{dtHoje | date:'yyyy-MM-dd'}}" nome="dependentesDtNascimento"
+            id='dependentesDtNascimento' class="form-control w-100" formControlName="dtNascimento">
+        </div>
+
+        <div class="campo">
+          <label class="form-label">CPF:</label>
+          <input type="text" autocomplete="off" nome="dependentesCpf" id='dependentesCpf' class="form-control w-100"
+            formControlName="cpf" mask="000.000.000-00" maxlength="14"
+            onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+          <div class="form-error"
+            *ngIf="!dependentesForm.controls['cpf'].hasError('required') && dependentesForm.controls['cpf'].hasError('cpfInvalido')">
+            <p class="text-danger">CPF inválido.</p>
+          </div>
+
+        </div>
+
+        <div class="campo">
+          <label class="form-label">Sexo:</label>
+          <select name="dependentesSexo" id="dependentesSexo" class="form-select w-100" formControlName="sexo">
+            <option disabled selected value="">-- Selecione --</option>
+            <option value="M">Masculino</option>
+            <option value="F">Feminino</option>
+          </select>
+        </div>
+
+        <div class="campo">
+          <div class="text-center">
+            <label class="form-label text-danger">Enviar comprovante para atualizar dependente: <br> (Ex: Certidão de
+              Nascimento, RG, etc...)</label>
+            <input class="form-control" type="file" accept="image/png, image/jpeg, .pdf"
+              (change)="onChangeDependente($event)">
+            <label>Tamanho máximo: <span class="text-danger">2,5MB</span></label><br>
+            <label>Extensões permitidas: <span class="text-danger">.jpg .png .pdf</span></label>
+          </div>
+        </div>
+
+        <div class="d-flex gap-3">
+          <button class="botao__adicionar" (click)="adicionarDependente(dependentesForm)"
+            *ngIf="!editDependenteBool">Adicionar</button>
+          <button class="botao__adicionar" (click)="editarDependente(dependentesForm)"
+            *ngIf="editDependenteBool">Salvar</button>
+          <button class="botao__cancelar" (click)="disableformDependente()">Cancelar</button>
+        </div>
+      </div>
+    </form>
+
+    <div class="checkboxes mt-2" [formGroup]="checkboxes">
+      <div class="form-check declaracao">
+        <input class="form-check-input" type="checkbox" id="flexCheckChecked" formControlName="termo" required>
+        <label class="form-check-label" for="flexCheckChecked">
+          Declaro que as informações acima prestadas são verdadeiras, e assumo a inteira responsabilidade pelas mesmas.
+          <br>
+        </label>
+      </div>
+      <div class="form-check autorizacao">
+        <input class="form-check-input" type="checkbox" id="autorizacao" formControlName="autorizacao" required>
+        <label class="form-check-label" for="autorizacao">
+          Nos termos da Lei Federal nº 13.709/18 - LGPD, autorizo a Prefeitura Municipal de São Vicente a realizar o
+          tratamento de
+          meus dados pessoais, e a utilizar desses meios de contato para enviar informações e oportunidades de
+          transferência. <br>
+        </label>
+      </div>
+    </div>
+
+    <div class="decreto mt-3 text-center">
+      <p>
+        DECRETO Nº 5.825.2022, Art. 2º - É dever do Servidor e funcionário público manter seus dados cadastrais
+        sempre atualizados, incluindo os de família, com informações verídicas, nos termos do artigo 246, inciso VIII,
+        da Lei nº 1.780, de 06 de junho de 1978. <br>
+        Lei Complementar nº 1.046/2022, artigo 11 - Poderá a Administração regulamentar, por Decreto do Prefeito,
+        procedimentos de Declaração de Bens, recadastramentos e provas de vida que, acaso não atendidas pelos servidores
+        e empregados, poderão ensejar a suspensão dos pagamentos até a regularização.
+      </p>
+    </div>
+    <input type="submit" class="mt-5 botao__recadastrar" (click)="PostServidor(recadastramento.value)" value="Enviar">
+
+  </div>
+</div>
